@@ -297,10 +297,11 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
     <a class="toc-item" href="#progress">✅ Progress tracker<span>Odškrtávej dokončené</span></a>
     <a class="toc-item" href="#devtools">🛠 Dev nástroje<span>Git, VS Code, Cursor Pro+</span></a>
     <a class="toc-item" href="#openai-models">🧠 OpenAI modely<span>GPT-4.1, o3, o4-mini – kdy co</span></a>
+    <a class="toc-item" href="#anthropic-models">🟣 Anthropic Claude<span>Opus, Sonnet, Haiku – API stack</span></a>
     <a class="toc-item" href="#blok1">🔵 Blok 1 – Jak fungují LLM<span>L1–L4 · neurony, transformery</span></a>
     <a class="toc-item" href="#blok2">🟢 Blok 2 – Prompty, API, fine-tuning<span>L5–L10 · kódování, HuggingFace</span></a>
     <a class="toc-item" href="#blok3">🟡 Blok 3 – Lokální modely, RAG<span>L11–L13 · Ollama, LangChain</span></a>
-    <a class="toc-item" href="#blok4">🟠 Blok 4 – Agenti<span>L14–L16 · LangGraph, AutoGen</span></a>
+    <a class="toc-item" href="#blok4">🟠 Blok 4 – Agenti<span>L14–L16 · LangGraph, AutoGen, CrewAI</span></a>
     <a class="toc-item" href="#blok5">🔴 Blok 5 – Vlastní projekt<span>L17–L19 · deploy, co dál</span></a>
     <a class="toc-item" href="#platforms">🎯 Online trénink<span>Python + AI platformy zdarma</span></a>
     <a class="toc-item" href="#popbooks">📚 Populárně-naučné<span>Literatura 2024–2026</span></a>
@@ -332,7 +333,7 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
     <li class="check-item"><input type="checkbox" id="c13" onchange="updateProgress()"><label for="c13">L13 – RAG pokročilé + eval</label></li>
     <li class="check-item"><input type="checkbox" id="c14" onchange="updateProgress()"><label for="c14">L14 – LangGraph agenti</label></li>
     <li class="check-item"><input type="checkbox" id="c15" onchange="updateProgress()"><label for="c15">L15 – AutoGen multi-agent</label></li>
-    <li class="check-item"><input type="checkbox" id="c16" onchange="updateProgress()"><label for="c16">L16 – Semantic Kernel (volitelné)</label></li>
+    <li class="check-item"><input type="checkbox" id="c16" onchange="updateProgress()"><label for="c16">L16 – Pydantic AI + CrewAI (volitelné)</label></li>
     <li class="check-item"><input type="checkbox" id="c17" onchange="updateProgress()"><label for="c17">L17 – Architektura projektu + MVP</label></li>
     <li class="check-item"><input type="checkbox" id="c18" onchange="updateProgress()"><label for="c18">L18 – FastAPI + deploy</label></li>
     <li class="check-item"><input type="checkbox" id="c19" onchange="updateProgress()"><label for="c19">L19 – Co dál + osobní roadmapa</label></li>
@@ -346,10 +347,10 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
   <ul class="mac-steps">
     <li class="mac-step"><span class="mac-step-num">1</span><span>Nainstaluj <strong>Homebrew</strong> – správce balíčků pro Mac. Otevři Terminal (Cmd+Space → „Terminal") a spusť:<br><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code><br>⚠️ Na M3 (Apple Silicon) je Homebrew v <code>/opt/homebrew/</code> – ne v <code>/usr/local/</code> jako na Intel Macu. Po instalaci přidej do PATH – installer ti to řekne přesně. Typicky: <code>echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc && source ~/.zshrc</code><br>Dokumentace: <a href="https://brew.sh" target="_blank">brew.sh</a></span></li>
     <li class="mac-step"><span class="mac-step-num">2</span><span>Nainstaluj <strong>pyenv</strong> – správce verzí Pythonu:<br><code>brew install pyenv</code><br>Přidej do <code>~/.zshrc</code> tyto tři řádky:<br><code>export PYENV_ROOT="$HOME/.pyenv"</code><br><code>export PATH="$PYENV_ROOT/bin:$PATH"</code><br><code>eval "$(pyenv init -)"</code><br>Pak: <code>source ~/.zshrc</code><br>Dokumentace: <a href="https://github.com/pyenv/pyenv#installation" target="_blank">github.com/pyenv/pyenv</a></span></li>
-    <li class="mac-step"><span class="mac-step-num">3</span><span>Nainstaluj <strong>Python 3.11</strong>:<br><code>pyenv install 3.11.9 && pyenv global 3.11.9</code><br>Ověř: <code>python --version</code> → Python 3.11.9<br>✅ Na M3 Max se Python kompiluje nativně pro ARM – je výrazně rychlejší než na Intel Macu. PyTorch i NumPy využijí plný výkon čipu.</span></li>
+    <li class="mac-step"><span class="mac-step-num">3</span><span>Nainstaluj <strong>Python 3.12</strong>:<br><code>pyenv install 3.12.5 && pyenv global 3.12.5</code><br>Ověř: <code>python --version</code> → Python 3.12.5<br>✅ Na M3 Max se Python kompiluje nativně pro ARM – je výrazně rychlejší než na Intel Macu. PyTorch i NumPy využijí plný výkon čipu.</span></li>
     <li class="mac-step"><span class="mac-step-num">4</span><span>Nainstaluj <strong>Cursor</strong> (doporučuji nad VS Code pro AI development):<br><a href="https://www.cursor.com" target="_blank">cursor.com</a> → Download → vyber <strong>Apple Silicon</strong> verzi → přetáhni do Applications<br>Cursor = VS Code + nativní AI asistence. Všechny VS Code extensions fungují stejně. Cmd+Shift+P → „Shell Command: Install 'cursor' command in PATH".<br>Alternativa: <a href="https://code.visualstudio.com" target="_blank">VS Code</a> → taktéž stáhni Apple Silicon verzi.</span></li>
     <li class="mac-step"><span class="mac-step-num">5</span><span>Pro každý projekt vytvoř <strong>virtuální prostředí</strong>:<br><code>mkdir ai-projects && cd ai-projects</code><br><code>python -m venv .venv</code><br><code>source .venv/bin/activate</code> ← spouštíš pokaždé při otevření nového Terminálu<br>Vidíš <code>(.venv)</code> před promptem? Prostředí je aktivní.</span></li>
-    <li class="mac-step"><span class="mac-step-num">6</span><span>Nainstaluj <strong>JupyterLab</strong> a základní balíčky:<br><code>pip install jupyterlab numpy matplotlib pandas</code><br>Spusť: <code>jupyter lab</code> → otevře se na <code>http://localhost:8888</code></span></li>
+    <li class="mac-step"><span class="mac-step-num">6</span><span>Nainstaluj <strong>JupyterLab</strong> a základní balíčky:<br><code>pip install jupyterlab numpy matplotlib pandas python-dotenv</code><br>Spusť: <code>jupyter lab</code> → otevře se na <code>http://localhost:8888</code></span></li>
     <li class="mac-step"><span class="mac-step-num">7</span><span>Vytvoř <strong>.env</strong> pro API klíče:<br><code>touch .env && echo ".env" >> .gitignore</code><br>Obsah .env: <code>OPENAI_API_KEY=sk-...</code> · <code>ANTHROPIC_API_KEY=sk-ant-...</code><br>Nikdy nepushe .env na GitHub.</span></li>
     <li class="mac-step"><span class="mac-step-num">8</span><span>🚀 <strong>M3 Max speciál: nainstaluj Ollama</strong> – spouštění LLM lokálně, zdarma, offline:<br>Stáhni z <a href="https://ollama.com" target="_blank">ollama.com</a> → přetáhni do Applications. Pak:<br><code>ollama pull llama3.2</code> → Llama 3.2 3B (~2 GB, rychlý, pro experimenty)<br><code>ollama pull mistral</code> → Mistral 7B (~4 GB, <strong>doporučený sweet spot</strong>)<br><code>ollama pull llama3.1:8b</code> → Llama 3.1 8B (~5 GB, výborný výkon)<br><code>ollama pull phi3:14b</code> → Phi-3 Medium 14B (~8 GB, silný model)<br><code>ollama run mistral</code> → spustí chat v Terminálu<br>⚠️ <strong>Llama 3.1 70B nedoporučuji:</strong> v 4-bit kvantizaci potřebuje ~40 GB, macOS systém spotřebuje dalších ~4–6 GB – na 36 GB to nepůjde plynule. Reálný strop je ~20–24 GB modely (např. Qwen 2.5 14B nebo Gemma 2 27B). Mistral 7B a Llama 3.1 8B jsou praktický sweet spot pro tento kurz.<br>Ollama poskytuje OpenAI-kompatibilní API na <code>localhost:11434</code> – použij místo OpenAI API při vývoji a šetři náklady.</span></li>
     <li class="mac-step"><span class="mac-step-num">9</span><span>🚀 <strong>M3 Max speciál: nainstaluj MLX</strong> – Apple framework optimalizovaný pro M-čipy:<br><code>pip install mlx mlx-lm</code><br>MLX využívá Apple Silicon naplno – je až 2× rychlejší než PyTorch pro inferenci na stejném hardwaru.<br>Test – spusť Mistral 7B lokálně:<br><code>mlx_lm.generate --model mlx-community/Mistral-7B-Instruct-v0.3-4bit --prompt "Co je RAG systém?"</code><br>Model se stáhne jednou (~4 GB), pak běží offline. Na M3 Max generuje ~60–80 tokenů/sec.<br>Dokumentace: <a href="https://ml-explore.github.io/mlx/build/html/index.html" target="_blank">ml-explore.github.io/mlx</a> · Modely: <a href="https://huggingface.co/mlx-community" target="_blank">huggingface.co/mlx-community</a></span></li>
@@ -549,6 +550,29 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
       </div>
     </div>
 
+    <div class="devtool">
+      <div class="devtool-header">
+        <span class="devtool-icon">⚡</span>
+        <span class="devtool-name"><a href="https://docs.astral.sh/uv/" target="_blank">uv – rychlý správce balíčků</a></span>
+        <span class="devtool-badge">ZDARMA</span>
+      </div>
+      <div class="devtool-body">
+        <code>uv</code> je náhrada za pip napsaná v Rustu – je 10–100× rychlejší a automaticky spravuje venv za tebe. V 2026 se stává standardem pro Python projekty.<br><br>
+        <strong>Instalace:</strong><br>
+        <code>brew install uv</code><br><br>
+        <strong>Základní příkazy (místo pip + venv):</strong>
+        <ul>
+          <li><code>uv init muj-projekt</code> – vytvoří projekt s pyproject.toml</li>
+          <li><code>uv add openai langchain</code> – přidá balíčky (automaticky vytvoří venv)</li>
+          <li><code>uv run python skript.py</code> – spustí skript ve správném venv</li>
+          <li><code>uv sync</code> – nainstaluje vše z pyproject.toml (jako pip install -r)</li>
+          <li><code>uv pip install balicek</code> – klasický pip-kompatibilní příkaz</li>
+        </ul>
+        <strong>Pro kurz:</strong> Používej buď klasický <code>venv + pip</code> (jak je popsáno výše) nebo <code>uv</code> – oba přístupy fungují. <code>uv</code> doporučuji pro nové projekty od L11 dál.<br><br>
+        <strong>Dokumentace:</strong> <a href="https://docs.astral.sh/uv/" target="_blank">docs.astral.sh/uv</a>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -568,12 +592,12 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
       </div>
       <div class="devtool-body">
         GPT-5 (vydáno 2025) a jeho varianty jsou aktuálně nejsilnější modely OpenAI. Pro kurz jsou spíše přeplácené – ale je dobré vědět o jejich existenci.<br><br>
-        <strong>Modely:</strong>
+        <strong>Modely (⚠️ názvy jsou orientační – vždy ověř na <a href="https://platform.openai.com/docs/models" target="_blank">platform.openai.com/docs/models</a>):</strong>
         <ul>
-          <li><code>gpt-5.4</code> – aktuální flagship (duben 2026), multimodální (text, obraz, audio, video), 256k+ kontext, integrované nástroje a paměť. Nejdražší.</li>
-          <li><code>gpt-5.4-mini</code> – rychlá a levnější varianta GPT-5.4. Dobrý kompromis pro produkci.</li>
-          <li><code>gpt-5.4-nano</code> – nejlevnější z rodiny, optimalizovaný pro latenci.</li>
-          <li><code>gpt-5.3-codex</code> – specializovaný na agentic coding (Cursor, Codex CLI). V Cursoru ho znáš.</li>
+          <li><code>gpt-5</code> – aktuální flagship, multimodální (text, obraz, audio, video), velký kontext, integrované nástroje a paměť. Nejdražší.</li>
+          <li><code>gpt-5-mini</code> – rychlá a levnější varianta. Dobrý kompromis pro produkci.</li>
+          <li><code>gpt-5-nano</code> – nejlevnější z rodiny, optimalizovaný pro latenci.</li>
+          <li><code>codex-mini-latest</code> – specializovaný na agentic coding (Cursor, Codex CLI). V Cursoru ho znáš.</li>
         </ul>
         <strong>Pro kurz:</strong> Drahé pro experimenty. Použij gpt-5.4-mini v L17–18 pro produkční projekt pokud chceš nejlepší výsledky. Pro učení volí gpt-4.1-mini.
       </div>
@@ -709,6 +733,86 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
           o4-mini (reasoning v IDE)<br>
           <span style="color:var(--text-muted)">→ Auto mode neubírá kredity</span>
         </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════ ANTHROPIC MODELY – PŘEHLED ══════════ -->
+<div class="devtools-section" id="anthropic-models">
+  <h2>🟣 Anthropic Claude modely – alternativní stack</h2>
+  <p>Anthropic je druhý klíčový provider (duben 2026). Claude modely jsou vynikající pro reasoning, kódování a dlouhé kontexty. Máš přístup přes Cursor Pro+ i přímo přes Anthropic API.</p>
+  <div class="devtools-grid">
+
+    <div class="devtool">
+      <div class="devtool-header">
+        <span class="devtool-icon">🧠</span>
+        <span class="devtool-name">Claude Opus 4.6 – nejsilnější reasoning</span>
+        <span class="devtool-badge" style="background:var(--purple-50);color:var(--purple-600);border-color:var(--purple-200)">NEJSCHOPNĚJŠÍ</span>
+      </div>
+      <div class="devtool-body">
+        Nejsilnější model Anthropic – pro komplexní architektonická rozhodnutí, dlouhé dokumenty, složité debugování.<br><br>
+        <strong>API string:</strong> <code>"claude-opus-4-6"</code><br>
+        <strong>Context window:</strong> 200k tokenů<br>
+        <strong>Pro kurz:</strong> Použij pro L14–L15 (agenti, složitá architektura) nebo jako alternativu k o3 pro reasoning.<br>
+        <strong>V Cursoru:</strong> claude-opus-4-6 máš dostupný přes Cmd+L – pro složité refaktory.
+      </div>
+    </div>
+
+    <div class="devtool">
+      <div class="devtool-header">
+        <span class="devtool-icon">⚡</span>
+        <span class="devtool-name">Claude Sonnet 4.6 – doporučený default</span>
+        <span class="devtool-badge">DOPORUČENO PRO KURZ</span>
+      </div>
+      <div class="devtool-body">
+        Nejlepší poměr výkon/rychlost/cena z Claude rodiny. Výborný na kódování, analýzu dokumentů i RAG systémy.<br><br>
+        <strong>API string:</strong> <code>"claude-sonnet-4-6"</code><br>
+        <strong>Context window:</strong> 200k tokenů<br>
+        <strong>Pro kurz:</strong> <strong>Defaultní volba pro L6–L18.</strong> Alternativní stack k OpenAI – všechny příklady kurzu fungují s claude-sonnet-4-6 místo gpt-4.1-mini.<br>
+        <strong>V Cursoru:</strong> Toto je tvůj primární Cursor model. Auto mode ho vybere nejčastěji.
+      </div>
+    </div>
+
+    <div class="devtool">
+      <div class="devtool-header">
+        <span class="devtool-icon">🐇</span>
+        <span class="devtool-name">Claude Haiku 4.5 – rychlý a levný</span>
+        <span class="devtool-badge">PRO BATCH ÚKOLY</span>
+      </div>
+      <div class="devtool-body">
+        Nejrychlejší a nejlevnější Claude model – analogie k gpt-4.1-nano pro masové experimenty.<br><br>
+        <strong>API string:</strong> <code>"claude-haiku-4-5-20251001"</code><br>
+        <strong>Pro kurz:</strong> Použij v L6 pro batch testování promptů nebo v L13 pro levné RAG evaluace.<br>
+        <strong>Cena:</strong> Výrazně levnější než Sonnet – vhodný pro iterativní experimenty kde nepotřebuješ maximální kvalitu.
+      </div>
+    </div>
+
+    <div class="devtool">
+      <div class="devtool-header">
+        <span class="devtool-icon">🔌</span>
+        <span class="devtool-name">Anthropic Python SDK – jak začít</span>
+        <span class="devtool-badge">KÓDOVÁNÍ</span>
+      </div>
+      <div class="devtool-body">
+        Anthropic API je téměř identické s OpenAI API strukturou – přechod je snadný.<br><br>
+        <strong>Instalace:</strong> <code>pip install anthropic</code><br>
+        <strong>API klíč:</strong> <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a><br><br>
+        <strong>Základní volání:</strong>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;background:var(--gray-100);border:1px solid var(--border);border-radius:7px;padding:10px 13px;margin:8px 0;line-height:1.7;overflow-x:auto;white-space:pre"><span style="color:var(--text-muted)"># Stejná struktura jako openai.OpenAI()</span>
+import anthropic
+client = anthropic.Anthropic()
+
+msg = client.messages.create(
+    model=<span style="color:var(--purple-600)">"claude-sonnet-4-6"</span>,
+    max_tokens=1024,
+    messages=[{<span style="color:var(--purple-600)">"role"</span>: <span style="color:var(--purple-600)">"user"</span>,
+               <span style="color:var(--purple-600)">"content"</span>: <span style="color:var(--purple-600)">"Vysvětli mi RAG systém"</span>}]
+)
+print(msg.content[0].text)</div>
+        <strong>Docs:</strong> <a href="https://docs.anthropic.com" target="_blank">docs.anthropic.com</a> · <strong>Pricing:</strong> <a href="https://www.anthropic.com/pricing" target="_blank">anthropic.com/pricing</a>
       </div>
     </div>
 
@@ -1508,6 +1612,74 @@ print(f"GPT-3 má 96 takových bloků → {96 * pocet_parametru:,} parametrů (p
         </div>
       </div>
       <div class="section">
+        <div class="section-title">Strukturované výstupy – Pydantic + response_format</div>
+        <div class="coding-card">
+          <div class="coding-card-header">
+            <span class="coding-card-label">💻 Kódování</span>
+            <span class="coding-card-title">Nutit LLM vracet JSON – Pydantic + structured outputs</span>
+          </div>
+          <div class="coding-section why">
+            <div class="coding-section-label">Proč to děláš</div>
+            <p>V produkci nepotřebuješ text – potřebuješ data. Structured outputs zajistí, že LLM vrátí vždy platný JSON ve tvém formátu. Bez toho parsování výstupů = noční můra.</p>
+          </div>
+          <div class="coding-section how">
+            <div class="coding-section-label">Jak na to – krok za krokem</div>
+            <ol>
+              <li>Nainstaluj: <code>pip install pydantic openai</code></li>
+              <li>Definuj datový model pomocí Pydantic BaseModel</li>
+              <li>Předej model do <code>response_format</code> parametru</li>
+              <li>LLM vrátí vždy validní JSON – nebo vyhodí chybu</li>
+            </ol>
+          </div>
+          <div class="coding-section">
+            <div class="coding-section-label">Kód – vlož do nové buňky</div>
+<div class="code-block"><span class="code-comment"># pip install pydantic openai</span>
+from pydantic import BaseModel
+from openai import OpenAI
+<span class="code-comment"># Pro Anthropic: from anthropic import Anthropic</span>
+
+client = OpenAI()
+
+<span class="code-comment"># Definuj strukturu výstupu</span>
+class HodnoceniProduktu(BaseModel):
+    nazev: str
+    skore: int          <span class="code-comment"># 1–10</span>
+    klady: list[str]    <span class="code-comment"># max 3 položky</span>
+    zapory: list[str]   <span class="code-comment"># max 2 položky</span>
+    doporuceni: bool
+
+<span class="code-comment"># Structured output – model MUSÍ vrátit tento formát</span>
+completion = client.beta.chat.completions.parse(
+    model=<span class="code-comment">"gpt-4.1-mini"</span>,
+    messages=[{
+        <span class="code-comment">"role"</span>: <span class="code-comment">"user"</span>,
+        <span class="code-comment">"content"</span>: <span class="code-comment">"Zhodnoť tento produkt: iPhone 16 Pro"</span>
+    }],
+    response_format=HodnoceniProduktu,
+)
+
+<span class="code-comment"># Výsledek je přímo Python objekt – žádné parsování!</span>
+hodnoceni = completion.choices[0].message.parsed
+print(f"Název: {hodnoceni.nazev}")
+print(f"Skóre: {hodnoceni.skore}/10")
+print(f"Doporučení: {'✓' if hodnoceni.doporuceni else '✗'}")
+print(f"Klady: {', '.join(hodnoceni.klady)}")</div>
+          </div>
+          <div class="coding-section see">
+            <div class="coding-section-label">Co uvidíš po spuštění</div>
+            <p>Místo nestrukturovaného textu dostaneš Python objekt s garantovanými typy. <code>hodnoceni.skore</code> je vždy <code>int</code>, <code>hodnoceni.klady</code> je vždy <code>list[str]</code>. Žádné <code>json.loads()</code>, žádné KeyError výjimky.</p>
+          </div>
+          <div class="coding-section try">
+            <div class="coding-section-label">Zkus rozšířit</div>
+            <ol>
+              <li>Přidej do modelu pole <code>cena_odhad: float</code> – LLM odhadne cenu produktu</li>
+              <li>Zkus <code>Optional[str]</code> pro volitelná pole: <code>from typing import Optional</code></li>
+              <li>Stejný pattern funguje s Anthropic SDK – zkus ho přepsat na <code>claude-sonnet-4-6</code></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="section">
         <div class="section-title">Výstup lekce</div>
         <div class="output-box"><strong>✓ Deliverable</strong><code>L6_prompts.ipynb</code> + <code>eval.py</code> + <code>eval_results.csv</code>. Commitni: <code>git add . && git commit -m "L6: prompt eval pipeline + structured outputs"</code></div>
       </div>
@@ -2148,6 +2320,24 @@ print(f"GPT-3 má 96 takových bloků → {96 * pocet_parametru:,} parametrů (p
         </div>
       </div>
       <div class="section">
+        <div class="section-title">MCP – Model Context Protocol</div>
+        <ul class="steps">
+          <li class="step"><span class="step-num">+</span><span class="step-content"><strong>Co je MCP a proč ho znát</strong>
+          <br>MCP (Model Context Protocol, Anthropic 2024) je otevřený standard pro propojování AI agentů s nástroji, databázemi a API. Cursor, Claude Desktop a většina moderních AI nástrojů v 2026 používá MCP.
+          <br><br><strong>Klíčové koncepty:</strong>
+          <ul style="margin:6px 0 0 14px;display:flex;flex-direction:column;gap:3px;font-size:13px">
+            <li><strong>MCP Server</strong> – poskytuje nástroje (tools) a zdroje (resources) agentovi</li>
+            <li><strong>MCP Client</strong> – agent který MCP servery volá (Cursor, LangGraph, Claude Desktop)</li>
+            <li><strong>Transport</strong> – stdio (lokální procesy) nebo HTTP+SSE (vzdálené servery)</li>
+          </ul>
+          <br><strong>Proč to musíš znát:</strong> Pokud v L17–18 nasazuješ vlastní agent, zákazníci a integrace budou čekat MCP-kompatibilní rozhraní. Je to nový REST API standard pro AI agenty.
+          <br><br>📖 <strong>Přečti:</strong> <a href="https://modelcontextprotocol.io/introduction" target="_blank">modelcontextprotocol.io/introduction</a> (~15 min)
+          <br>📺 <strong>Sleduj:</strong> Jak MCP funguje v Cursoru: Cursor Settings → MCP → prohlédni dostupné servery
+          <div class="tip-box"><strong>Tip</strong>Cursor Pro+ ti dává přístup k MCP serverům přímo v IDE. Vyzkoušej: přidej Tavily MCP server do Cursoru a místo <code>TavilySearchResults</code> v LangGraphu použij MCP tool – je to identické z pohledu agenta.</div>
+          </span></li>
+        </ul>
+      </div>
+      <div class="section">
         <div class="section-title">Výstup lekce</div>
         <div class="output-box"><strong>✓ Deliverable</strong>LangGraph agent s nástroji + pamětí + human-in-the-loop + LangSmith screenshot. Commitni.</div>
         <div class="tip-box"><strong>💡 Tip</strong>LangGraph je nejdůležitější framework pro produkční agenty. Investuj sem nejvíc času z celého bloku.</div>
@@ -2215,30 +2405,81 @@ print(f"GPT-3 má 96 takových bloků → {96 * pocet_parametru:,} parametrů (p
   <div class="lesson" id="l16">
     <div class="lesson-header" onclick="toggle('l16')">
       <span class="lesson-num">L16</span>
-      <span class="lesson-title">Semantic Kernel <span style="font-size:11px;font-family:'IBM Plex Mono',monospace;background:var(--amber-50);color:var(--amber-600);border:1px solid var(--amber-200);padding:1px 6px;border-radius:3px;margin-left:4px">VOLITELNÉ</span></span>
-      <span class="lesson-meta">~2 h · jen pokud pracuješ v Microsoft/Azure ekosystému</span>
+      <span class="lesson-title">Pydantic AI + CrewAI – alternativní frameworky <span style="font-size:11px;font-family:'IBM Plex Mono',monospace;background:var(--amber-50);color:var(--amber-600);border:1px solid var(--amber-200);padding:1px 6px;border-radius:3px;margin-left:4px">VOLITELNÉ</span></span>
+      <span class="lesson-meta">~3 h · type-safe agenti, role-based orchestrace</span>
       <span class="chevron">▶</span>
     </div>
     <div class="lesson-body">
-      <div class="tip-box" style="margin-top:14px"><strong>⚠️ Kdy přeskočit</strong>SK je primárně C#/.NET nástroj. Python verze existuje ale je druhořadá. Pokud nepracuješ v Microsoft/Azure stacku, přeskoč a věnuj čas navíc L14 (LangGraph) nebo L17 (vlastní projekt). Pokud přeskočíš, pokračuj rovnou na L17.</div>
       <div class="section">
-        <div class="section-title">Kroky (pokud pokračuješ)</div>
+        <div class="section-title">Proč tato lekce (a proč je volitelná)</div>
+        <div class="tip-box"><strong>Volitelné</strong>Tuto lekci přeskoč pokud: máš málo času, nebo jsi s LangGraph a AutoGen spokojen. Pydantic AI a CrewAI jsou cenné alternativy – ale ne nutné pro produkční projekty. Přeskoč rovnou na L17 pokud máš projekt.</div>
+      </div>
+      <div class="section">
+        <div class="section-title">Část A – Pydantic AI</div>
         <ul class="steps">
-          <li class="step"><span class="step-num">1</span><span class="step-content"><strong>První kernel + plugin</strong>
-<br>📖 <strong>Přečti:</strong> <a href="https://learn.microsoft.com/en-us/semantic-kernel/overview/" target="_blank">Semantic Kernel Overview</a> (20 min).
-<br>💻 <strong>Nakóduj:</strong>
-<br><code>pip install semantic-kernel</code>
-<br><code>import semantic_kernel as sk</code>
-<br><code>from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion</code>
-<br><code>kernel = sk.Kernel()</code>
-<br><code>kernel.add_service(OpenAIChatCompletion("gpt-4.1-mini", api_key=os.getenv("OPENAI_API_KEY")))</code>
-<br>Pak projdi <a href="https://github.com/microsoft/semantic-kernel/tree/main/python/samples/getting_started" target="_blank">SK Getting Started notebooky 00–04</a> a vytvoř vlastní plugin s <code>@kernel_function</code>.
+          <li class="step"><span class="step-num">1</span><span class="step-content"><strong>Co je Pydantic AI a proč ho studovat</strong>
+          <br>Pydantic AI (2024, od tvůrců Pydantic) je agent framework postavený na type safety. Každý vstup a výstup agenta je validovaný Pydantic modelem – žádné surprise JSONy. Výborný pro produkční agenty kde spolehlivost > flexibility.
+          <br><br><code>pip install pydantic-ai</code>
+          <br>Dokumentace: <a href="https://ai.pydantic.dev" target="_blank">ai.pydantic.dev</a>
+<div class="code-block"><span class="code-comment"># Minimální Pydantic AI agent</span>
+from pydantic_ai import Agent
+from pydantic import BaseModel
+
+class VysledekAnalyzy(BaseModel):
+    sentiment: str     <span class="code-comment"># positive / negative / neutral</span>
+    skore: int         <span class="code-comment"># 1–10</span>
+    popis: str
+
+agent = Agent(
+    <span class="code-comment">'openai:gpt-4.1-mini'</span>,  <span class="code-comment"># nebo 'anthropic:claude-sonnet-4-6'</span>
+    result_type=VysledekAnalyzy,
+    system_prompt=<span class="code-comment">'Analyzuj sentiment textu. Vrať strukturovaný výsledek.'</span>
+)
+
+vysledek = agent.run_sync(<span class="code-comment">'Tento produkt je absolutně skvělý!'</span>)
+print(vysledek.data)  <span class="code-comment"># vždy VysledekAnalyzy objekt</span></div>
+          </span></li>
+        </ul>
+      </div>
+      <div class="section">
+        <div class="section-title">Část B – CrewAI</div>
+        <ul class="steps">
+          <li class="step"><span class="step-num">2</span><span class="step-content"><strong>Co je CrewAI</strong>
+          <br>CrewAI je role-based multi-agent framework – definuješ „tým" agentů s rolemi, cíli a nástroji. Intuitivnější než AutoGen pro business use cases. Populární alternativa v 2025–2026.
+          <br><br><code>pip install crewai crewai-tools</code>
+          <br>Dokumentace: <a href="https://docs.crewai.com" target="_blank">docs.crewai.com</a>
+<div class="code-block"><span class="code-comment"># Dvoupersonový tým: výzkumník + spisovatel</span>
+from crewai import Agent, Task, Crew
+
+vyzkumnik = Agent(
+    role=<span class="code-comment">'AI Researcher'</span>,
+    goal=<span class="code-comment">'Najdi aktuální informace o tématu'</span>,
+    backstory=<span class="code-comment">'Expert na vyhledávání a analýzu dat'</span>,
+    verbose=True
+)
+
+spisovatel = Agent(
+    role=<span class="code-comment">'Content Writer'</span>,
+    goal=<span class="code-comment">'Napiš stručné shrnutí pro netechnické publikum'</span>,
+    backstory=<span class="code-comment">'Specialista na jasnou komunikaci'</span>,
+    verbose=True
+)
+
+ukol1 = Task(description=<span class="code-comment">'Zjisti: co je RAG a jak se používá v 2026?'</span>, agent=vyzkumnik)
+ukol2 = Task(description=<span class="code-comment">'Shrň výzkum do 3 odstavců pro laiky'</span>, agent=spisovatel)
+
+tym = Crew(agents=[vyzkumnik, spisovatel], tasks=[ukol1, ukol2])
+vysledek = tym.kickoff()
+print(vysledek)</div>
+          </span></li>
+          <li class="step"><span class="step-num">3</span><span class="step-content"><strong>Porovnání frameworků – napište 1stránkový dokument</strong>
+          <br>Napiš srovnávací tabulku: LangGraph vs AutoGen vs CrewAI vs Pydantic AI. Sloupce: typ orchestrace, silné stránky, kdy použít, kdy ne, velikost komunity. Toto je dokument který budeš používat při výběru technologie pro L17.
           </span></li>
         </ul>
       </div>
       <div class="section">
         <div class="section-title">Výstup lekce</div>
-        <div class="output-box"><strong>✓ Deliverable</strong>SK plugin + 1 strana: kdy SK vs. LangGraph.</div>
+        <div class="output-box"><strong>✓ Deliverable</strong>Pydantic AI agent s typovaným výstupem + CrewAI tým se dvěma agenty + srovnávací tabulka frameworků (LangGraph / AutoGen / CrewAI / Pydantic AI).</div>
       </div>
     </div>
   </div>
@@ -2389,6 +2630,58 @@ print(f"GPT-3 má 96 takových bloků → {96 * pocet_parametru:,} parametrů (p
 <br>4. Twitter/X: @karpathy, @ylecun, @sama, @darioamodei
 <br>5. <a href="https://simonwillison.net" target="_blank">simonwillison.net</a> – praktický pohled bez hype
 <br>Napiš si 1 stránku: co chceš umět za 6 měsíců. Kandidáti: multimodální modely, AI security, MCP ekosystém, Claude API, vlastní fine-tuning pipeline na M3 Max.
+          </span></li>
+        </ul>
+      </div>
+      <div class="section">
+        <div class="section-title">Portfolio a viditelnost</div>
+        <ul class="steps">
+          <li class="step"><span class="step-num">P1</span><span class="step-content"><strong>Vybuduj AI portfolio které tě odliší</strong>
+          <br>README na GitHubu nestačí. Toto jsou konkrétní kroky:
+          <ul style="margin:8px 0 0 14px;display:flex;flex-direction:column;gap:4px;font-size:13px">
+            <li><strong>HuggingFace Spaces</strong> – nasaď live demo svého RAG nebo agenta (<a href="https://huggingface.co/spaces" target="_blank">huggingface.co/spaces</a>). Zdarma, viditelné celé AI komunitě.</li>
+            <li><strong>GitHub pinned repos</strong> – vyber 4–6 projektů z kurzu, každý s čistým README: co to je, jak to spustit, screenshot výstupu</li>
+            <li><strong>Krátké video demo</strong> (2–3 min) svého finálního projektu – nahraj na YouTube nebo GitHub. Firmy toto oceňují víc než popis.</li>
+            <li><strong>Technický blog</strong> – napiš 1–2 posty o tom co ses naučil (dev.to, Substack, nebo GitHub Pages). Vysvětlovat věci jiným je nejrychlejší způsob jak sám hlouběji porozumět.</li>
+          </ul>
+          </span></li>
+        </ul>
+      </div>
+      <div class="section">
+        <div class="section-title">Pracovní trh – co firmy hledají</div>
+        <ul class="steps">
+          <li class="step"><span class="step-num">T1</span><span class="step-content"><strong>AI role a co se za nimi skrývá</strong>
+          <br>
+          <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px">
+            <thead><tr style="background:var(--gray-50);border-bottom:1px solid var(--border)">
+              <th style="padding:7px 10px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Role</th>
+              <th style="padding:7px 10px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Co reálně děláš</th>
+              <th style="padding:7px 10px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Co musíš znát po kurzu</th>
+            </tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 10px;font-weight:600">AI Engineer</td><td style="padding:7px 10px;color:var(--text-muted)">Integruješ LLM do produktů, stavíš agenty a RAG systémy, napojuješ API</td><td style="padding:7px 10px;color:var(--text-muted)">✅ L6–L15 + deploy (L18)</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 10px;font-weight:600">ML Engineer</td><td style="padding:7px 10px;color:var(--text-muted)">Fine-tuning, trénování modelů, MLOps pipeline, evaluace</td><td style="padding:7px 10px;color:var(--text-muted)">✅ L1–L4 + L7–L10</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 10px;font-weight:600">Prompt Engineer</td><td style="padding:7px 10px;color:var(--text-muted)">Optimalizuješ prompty, stavíš evaluační datasety, testuješ modely</td><td style="padding:7px 10px;color:var(--text-muted)">✅ L5–L6 + L13 eval</td></tr>
+              <tr><td style="padding:7px 10px;font-weight:600">AI Product Manager</td><td style="padding:7px 10px;color:var(--text-muted)">Definuješ AI features, komunikuješ s engineering, rozumíš limitacím LLM</td><td style="padding:7px 10px;color:var(--text-muted)">✅ Celý kurz – znáš co je možné</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <div class="tip-box" style="margin-top:8px"><strong>Tip</strong>Po dokončení kurzu máš nejblíž k roli <strong>AI Engineer</strong> – to je aktuálně nejžádanější a nejlépe placená role v Česku i zahraničí. ML Engineer vyžaduje hlubší matematiku, Prompt Engineer je spíš přechodná pozice.</div>
+          </span></li>
+        </ul>
+      </div>
+      <div class="section">
+        <div class="section-title">Open-source přispívání</div>
+        <ul class="steps">
+          <li class="step"><span class="step-num">OS1</span><span class="step-content"><strong>Jak začít přispívat do AI open-source projektů</strong>
+          <br>Přispívání do open-source je nejrychlejší cesta k credibilitě a propojení s komunitou.
+          <ul style="margin:8px 0 0 14px;display:flex;flex-direction:column;gap:4px;font-size:13px">
+            <li><strong>LangChain</strong> (<a href="https://github.com/langchain-ai/langchain" target="_blank">github.com/langchain-ai/langchain</a>) – hledej issues označené <code>good first issue</code>. Dokumentace, testy, malé bug fixy.</li>
+            <li><strong>LangGraph</strong> (<a href="https://github.com/langchain-ai/langgraph" target="_blank">github.com/langchain-ai/langgraph</a>) – příklady a dokumentace jsou vítané</li>
+            <li><strong>HuggingFace datasets</strong> – přidej český dataset nebo přeložené evaluace</li>
+            <li><strong>Postup:</strong> Fork → clone → <code>good first issue</code> → PR → review → merge. První PR je nejtěžší.</li>
+          </ul>
           </span></li>
         </ul>
       </div>
