@@ -306,6 +306,7 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
     <a class="toc-item" href="#setup">🍎 Mac setup<span>Homebrew, pyenv, Cursor</span></a>
     <a class="toc-item" href="#troubleshooting">🚨 Troubleshooting<span>Časté chyby a jejich řešení</span></a>
     <a class="toc-item" href="#jupyter">📓 JupyterLab průvodce<span>Buňky, zkratky, kernel</span></a>
+    <a class="toc-item" href="#rozvrh">📅 Týdenní rozvrh<span>Po videa · St kód · Ne review</span></a>
     <a class="toc-item" href="#progress">✅ Progress tracker<span>Odškrtávej dokončené</span></a>
     <a class="toc-item" href="#devtools">🛠 Dev nástroje<span>Git, VS Code, Cursor Pro+</span></a>
     <a class="toc-item" href="#jazyky">💬 Jazyky &amp; technologie<span>Co se naučit a v jakém pořadí</span></a>
@@ -324,9 +325,62 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
   </div>
 </div>
 
+<!-- TÝDENNÍ ROZVRH -->
+<div class="collapsible" id="rozvrh" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;margin-bottom:32px">
+  <div class="collapsible-header" onclick="toggle('rozvrh')" style="border-radius:12px">
+    <div>
+      <h2 style="font-size:14px;font-weight:600;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin:0">📅 Týdenní rozvrh</h2>
+      <p style="font-size:12.5px;color:var(--text-muted);margin:2px 0 0">Šablona 7 dní · 6–8 hodin celkem</p>
+    </div>
+    <span class="chevron">▶</span>
+  </div>
+  <div class="collapsible-body">
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:4px">
+      <div style="background:var(--purple-50);border:1px solid var(--purple-200);border-radius:8px;padding:10px 10px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:var(--purple-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Po</div>
+        <div style="font-size:12px;line-height:1.5">📺 Videa<br><span style="color:var(--text-muted)">~1.5–2 h</span><br><br>Sleduj pomalu, dělej si poznámky do Markdownu.</div>
+      </div>
+      <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:8px;padding:10px 10px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Út</div>
+        <div style="font-size:12px;line-height:1.5;color:var(--text-muted)">Volný den<br><span style="font-size:11px">nebo čtení dokumentace</span></div>
+      </div>
+      <div style="background:var(--teal-50);border:1px solid var(--teal-200);border-radius:8px;padding:10px 10px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:var(--teal-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">St</div>
+        <div style="font-size:12px;line-height:1.5">💻 Kódování<br><span style="color:var(--text-muted)">~2–3 h</span><br><br>Jupyter notebook, coding karty z lekce.</div>
+      </div>
+      <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:8px;padding:10px 10px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Čt</div>
+        <div style="font-size:12px;line-height:1.5;color:var(--text-muted)">Volný den<br><span style="font-size:11px">nebo debugging toho co nešlo</span></div>
+      </div>
+      <div style="background:var(--blue-50);border:1px solid var(--blue-200);border-radius:8px;padding:10px 10px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:var(--blue-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Pá</div>
+        <div style="font-size:12px;line-height:1.5">📖 Čtení<br><span style="color:var(--text-muted)">~1 h</span><br><br>Literatura nebo dokumentace z lekce.</div>
+      </div>
+      <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:8px;padding:10px 10px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">So</div>
+        <div style="font-size:12px;line-height:1.5;color:var(--text-muted)">Volný den</div>
+      </div>
+      <div style="background:var(--amber-50);border:1px solid var(--amber-200);border-radius:8px;padding:10px 10px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:var(--amber-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Ne</div>
+        <div style="font-size:12px;line-height:1.5">🔁 Review<br><span style="color:var(--text-muted)">~1 h</span><br><br>Zopakuj klíčové pojmy. Commitni výstup. Odškrtni lekci.</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;background:var(--purple-50);border:1px solid var(--purple-200);border-radius:8px;padding:10px 14px;font-size:12.5px;line-height:1.6">
+      <strong style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--purple-600)">Tip:</strong> Každá lekce = přibližně jeden týden. Pokud máš více času, dvě lekce za týden jsou v pohodě u L1–L6. Od L12 zpomal – RAG a agenti potřebují čas na pochopení.
+    </div>
+  </div>
+</div>
+
 <!-- PROGRESS TRACKER -->
 <div class="progress-section" id="progress">
-  <h2>Progress tracker</h2>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:4px">
+    <h2 style="margin:0">Progress tracker</h2>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <button onclick="toggleAll()" id="toggleAllBtn" style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid var(--border);background:var(--gray-50);color:var(--text-muted);cursor:pointer">Rozbalit vše</button>
+      <button onclick="exportProgress()" style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid var(--border);background:var(--gray-50);color:var(--text-muted);cursor:pointer">⬇ Export JSON</button>
+      <button onclick="importProgress()" style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid var(--border);background:var(--gray-50);color:var(--text-muted);cursor:pointer">⬆ Import JSON</button>
+    </div>
+  </div>
   <p>Odškrtávej dokončené lekce. Stav se ukládá v prohlížeči. Celkem: <strong>19 lekcí · vlastním tempem</strong></p>
   <div class="progress-bar-wrap"><div class="progress-bar-fill" id="pbar"></div></div>
   <div class="progress-label" id="plabel">0 / 19 lekcí dokončeno</div>
@@ -2860,8 +2914,80 @@ print(vysledek)</div>
 <br>Nastav env variables (API klíče) přes Railway dashboard. Přidej <code>Procfile</code>: <code>web: uvicorn main:app --host 0.0.0.0 --port $PORT</code>.
 <br>Commitni: <code>git add . && git commit -m "L18: FastAPI + Streamlit + Railway deploy"</code>
           </span></li>
-          <li class="step"><span class="step-num">3</span><span class="step-content"><strong>Uživatelský test + iterace</strong>
-<br>Ukaž živého agenta 3 reálným uživatelům (kolegové z JIC nebo rodina). Zaznamenej zpětnou vazbu. Iteruj na základě jejich zkušenosti, ne svých dojmů. Jeden kolo iterace je víc než týden plánování.
+          <li class="step"><span class="step-num">3</span><span class="step-content"><strong>Monitoring v produkci – LangSmith, Langfuse, Helicone</strong>
+<br>Bez monitoringu nevíš kdy agent selhává, co stojí a kde se zpomaluje. Vyber jeden nástroj:
+<div style="overflow-x:auto;margin-top:8px">
+<table style="width:100%;border-collapse:collapse;font-size:12.5px">
+  <thead><tr style="background:var(--gray-50);border-bottom:1px solid var(--border)">
+    <th style="padding:7px 10px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em">Nástroj</th>
+    <th style="padding:7px 10px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em">Typ</th>
+    <th style="padding:7px 10px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em">Silná stránka</th>
+    <th style="padding:7px 10px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em">Cena</th>
+  </tr></thead>
+  <tbody>
+    <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 10px;font-weight:600"><a href="https://smith.langchain.com" target="_blank">LangSmith</a></td><td style="padding:7px 10px;color:var(--text-muted)">Cloud</td><td style="padding:7px 10px;color:var(--text-muted)">Nejlepší integrace s LangChain/LangGraph; traces, evals, datasets</td><td style="padding:7px 10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--green-600)">Free tier</td></tr>
+    <tr style="border-bottom:1px solid var(--border)"><td style="padding:7px 10px;font-weight:600"><a href="https://langfuse.com" target="_blank">Langfuse</a></td><td style="padding:7px 10px;color:var(--text-muted)">Open-source / Cloud</td><td style="padding:7px 10px;color:var(--text-muted)">Self-hostovatelný, framework-agnostický, silné evals a cost tracking</td><td style="padding:7px 10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--green-600)">Free (self-host)</td></tr>
+    <tr><td style="padding:7px 10px;font-weight:600"><a href="https://www.helicone.ai" target="_blank">Helicone</a></td><td style="padding:7px 10px;color:var(--text-muted)">Cloud proxy</td><td style="padding:7px 10px;color:var(--text-muted)">Nejjednodušší setup (1 řádek kódu), cost dashboard, rate limiting</td><td style="padding:7px 10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--green-600)">Free do 10k req</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="tip-box" style="margin-top:8px"><strong>Nejrychlejší start – Helicone</strong>Změň pouze base URL v OpenAI klientu:<br><code>client = OpenAI(base_url="https://oai.helicone.ai/v1", api_key=openai_key, default_headers={"Helicone-Auth": f"Bearer {helicone_key}"})</code><br>Všechna volání se začnou logovat automaticky. Žádné jiné změny kódu.</div>
+          </span></li>
+          <li class="step"><span class="step-num">4</span><span class="step-content"><strong>Testování AI výstupů – pytest + LLM-as-judge</strong>
+<br>Unit testy pro LLM chainy jsou jiné než klasické testy – výstup je nedeterministický. Přesto je testování nutné.
+<div class="coding-card" style="margin-top:10px">
+  <div class="coding-card-header">
+    <span class="coding-card-label">💻 Kódování</span>
+    <span class="coding-card-title">Jak testovat prompty a chainy</span>
+  </div>
+  <div class="coding-section">
+    <div class="coding-section-label">Kód – vytvoř <code>test_agent.py</code></div>
+<div class="code-block"><span class="code-comment"># pip install pytest openai</span>
+import pytest
+from openai import OpenAI
+
+client = OpenAI()
+
+<span class="code-comment"># ── Přístup 1: Deterministické aserce (pro structured outputs) ──</span>
+def get_sentiment(text: str) -> str:
+    r = client.chat.completions.create(
+        model=<span class="code-comment">"gpt-4.1-nano"</span>,
+        messages=[{<span class="code-comment">"role"</span>: <span class="code-comment">"user"</span>, <span class="code-comment">"content"</span>: f<span class="code-comment">"Vrať jen jedno slovo – sentiment textu (positive/negative/neutral): {text}"</span>}],
+        max_tokens=5
+    )
+    return r.choices[0].message.content.strip().lower()
+
+def test_positive_sentiment():
+    assert get_sentiment(<span class="code-comment">"Skvělý produkt, miluji ho!"</span>) == <span class="code-comment">"positive"</span>
+
+def test_negative_sentiment():
+    assert get_sentiment(<span class="code-comment">"Hrozná zkušenost, nikdy více."</span>) == <span class="code-comment">"negative"</span>
+
+<span class="code-comment"># ── Přístup 2: LLM-as-judge (pro volný text) ──</span>
+def llm_judge(output: str, criteria: str) -> bool:
+    <span class="code-comment">"""Zeptá se GPT zda output splňuje kritéria. Vrátí True/False."""</span>
+    r = client.chat.completions.create(
+        model=<span class="code-comment">"gpt-4.1-mini"</span>,
+        messages=[{<span class="code-comment">"role"</span>: <span class="code-comment">"user"</span>, <span class="code-comment">"content"</span>:
+            f<span class="code-comment">"Output: {output}\n\nKritérium: {criteria}\n\nOdpověz jen YES nebo NO."</span>}],
+        max_tokens=3
+    )
+    return <span class="code-comment">"yes"</span> in r.choices[0].message.content.lower()
+
+def test_answer_is_concise():
+    answer = <span class="code-comment">"RAG je metoda která kombinuje vyhledávání dokumentů s generativním modelem."</span>
+    assert llm_judge(answer, <span class="code-comment">"Je odpověď kratší než 2 věty a fakticky správná?"</span>)
+
+<span class="code-comment"># Spuštění: pytest test_agent.py -v</span></div>
+  </div>
+  <div class="coding-section try">
+    <div class="coding-section-label">Jak integrovat do CI/CD</div>
+    <p>Přidej do GitHub Actions: <code>pytest test_agent.py</code> se spustí při každém push. Testy selžou = deploy se nezastaví. Udržuj sadu 10–20 klíčových test cases pro svůj projekt z L17.</p>
+  </div>
+</div>
+          </span></li>
+          <li class="step"><span class="step-num">5</span><span class="step-content"><strong>Uživatelský test + iterace</strong>
+<br>Ukaž živého agenta 3 reálným uživatelům (kolegové z JIC nebo rodina). Zaznamenej zpětnou vazbu. Iteruj na základě jejich zkušenosti, ne svých dojmů. Jedno kolo iterace je víc než týden plánování.
           </span></li>
         </ul>
       </div>
@@ -3422,6 +3548,26 @@ print(vysledek)</div>
 // ── Accordion ──
 function toggle(id){const el=document.getElementById(id);el.classList.toggle('open')}
 
+function toggleAll(){
+  const collapsibles=document.querySelectorAll('.collapsible');
+  const anyOpen=[...collapsibles].some(el=>el.classList.contains('open'));
+  collapsibles.forEach(el=>anyOpen?el.classList.remove('open'):el.classList.add('open'));
+  const btn=document.getElementById('toggleAllBtn');
+  if(btn) btn.textContent=anyOpen?'Rozbalit vše':'Sbalit vše';
+}
+
+// ── Anchor auto-open: otevři collapsible pokud je cíl uvnitř ──
+function openAnchorSection(hash){
+  if(!hash) return;
+  const target=document.querySelector(hash);
+  if(!target) return;
+  // otevři element samotný pokud je collapsible
+  if(target.classList.contains('collapsible')) target.classList.add('open');
+  // nebo otevři jeho nejbližšího collapsible předka
+  const parent=target.closest('.collapsible');
+  if(parent) parent.classList.add('open');
+}
+
 // ── Platform tabs ──
 function showTab(name){
   document.querySelectorAll('.ptab-content').forEach(el=>el.classList.remove('visible'));
@@ -3475,10 +3621,47 @@ function updateProgress(){
   saveProgress();
 }
 
+// ── Export / Import progress ──
+function exportProgress(){
+  const state={};
+  for(let i=1;i<=TOTAL;i++){const cb=document.getElementById('c'+i);if(cb)state['c'+i]=cb.checked;}
+  const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='ai_roadmap_progress.json';a.click();
+}
+
+function importProgress(){
+  const input=document.createElement('input');input.type='file';input.accept='.json';
+  input.onchange=e=>{
+    const file=e.target.files[0];if(!file)return;
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      try{
+        const state=JSON.parse(ev.target.result);
+        for(let i=1;i<=TOTAL;i++){
+          const cb=document.getElementById('c'+i);
+          if(cb){cb.checked=!!state['c'+i];}
+        }
+        updateProgress();
+      }catch(err){alert('Chyba při načítání souboru.');}
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
 // Init on load
 window.addEventListener('DOMContentLoaded',()=>{
   loadProgress();
   updateProgress();
+  // anchor auto-open při načtení s hashem
+  if(location.hash) openAnchorSection(location.hash);
+});
+
+// anchor auto-open při kliknutí na TOC link
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href^="#"]');
+  if(a) setTimeout(()=>openAnchorSection(a.getAttribute('href')),10);
 });
 </script>
 </body>
