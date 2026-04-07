@@ -152,6 +152,9 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
 .output-box strong{color:var(--green-600);font-weight:600;font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:4px}
 .tip-box{background:var(--amber-50);border:1px solid var(--amber-200);border-radius:8px;padding:12px 16px;font-size:13px;margin-top:8px;line-height:1.6}
 .tip-box strong{color:var(--amber-600);font-weight:600;font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:4px}
+.lesson-resources{margin-top:10px;padding:9px 14px;background:var(--blue-50);border:1px solid var(--blue-200);border-radius:7px;font-size:12.5px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.lesson-resources-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--blue-600);flex-shrink:0}
+.lesson-resources a{color:var(--link);margin-right:2px}
 
 .connector{display:flex;justify-content:center;margin:8px 0 20px}
 .connector-line{width:1px;height:30px;background:linear-gradient(to bottom,var(--border),transparent)}
@@ -325,6 +328,7 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
     <a class="toc-item" href="#popbooks">📚 Populárně-naučné<span>Literatura 2024–2026</span></a>
     <a class="toc-item" href="#costs">💰 Odhad nákladů<span>Co tě to bude stát</span></a>
     <a class="toc-item" href="#glossary">📖 Glossary<span>Slovníček 22 klíčových pojmů</span></a>
+    <a class="toc-item" href="#komunita">🌐 Komunita<span>Discord, Reddit, newslettery</span></a>
     <a class="toc-item" href="#crosscut">🔁 Průřezové zdroje<span>Používej celou dobu</span></a>
     <a class="toc-item" href="#top">↑ Zpět nahoru<span></span></a>
   </div>
@@ -1246,6 +1250,7 @@ print(y.T)</div>
           <div class="book"><span class="book-icon">🌐</span><span class="book-body"><span class="book-title"><a href="https://d2l.ai/chapter_attention-mechanisms-and-transformers/index.html" target="_blank">Dive into Deep Learning – Attention & Transformers</a></span><span class="book-detail">d2l.ai · ZDARMA · spustitelné v Colab</span><span class="book-extract"><strong>Co číst:</strong> Kap. 11.1 „Queries, Keys, and Values" – nejlepší vizuální vysvětlení attention s kódem. Přečti po skončení L1.</span></span></div>
         </div>
       </div>
+      <div class="lesson-resources"><span class="lesson-resources-label">📚 Zdroje</span><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" target="_blank">3Blue1Brown – Neural Networks</a> · <a href="https://www.youtube.com/watch?v=VMj-3S1tku0" target="_blank">Karpathy – micrograd</a> · <a href="https://playground.tensorflow.org" target="_blank">TF Playground</a></div>
       <div class="section">
         <div class="section-title">Výstup lekce</div>
         <div class="output-box"><strong>✓ Deliverable</strong><code>L1_neuron.ipynb</code> – jeden neuron + forward pass dvouvrstvé XOR sítě. Markdown vysvětlení vlastními slovy: co je neuron, co je backprop.</div>
@@ -1427,6 +1432,7 @@ print(f"Finální loss:   {losses[-1]:.4f}")</div>
           <div class="book"><span class="book-icon">📗</span><span class="book-body"><span class="book-title"><a href="https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/" target="_blank">Designing ML Systems – Chip Huyen</a></span><span class="book-detail">O'Reilly · 2022</span><span class="book-extract"><strong>Co číst:</strong> Kapitola 1 a 2 – overview ML systémů a project lifecycle. Čti jako kontext, ne technický manuál.</span></span></div>
         </div>
       </div>
+      <div class="lesson-resources"><span class="lesson-resources-label">📚 Zdroje</span><a href="https://www.youtube.com/watch?v=i94OvYbeWhc" target="_blank">Karpathy – backprop video</a> · <a href="https://cs231n.github.io/optimization-1/" target="_blank">CS231n – Gradient Descent</a> · <a href="https://colah.github.io/posts/2015-08-Backprop/" target="_blank">Colah – Backprop vizualizace</a></div>
       <div class="section">
         <div class="section-title">Výstup lekce</div>
         <div class="output-box"><strong>✓ Deliverable</strong><code>L2_training.ipynb</code> – XOR síť s loss křivkou + experimenty s architekturou. Commitni: <code>git add . && git commit -m "L2: XOR neural net training from scratch"</code></div>
@@ -1672,6 +1678,7 @@ print(f"GPT-3 má 96 takových bloků → {96 * pocet_parametru:,} parametrů (p
           <div class="book"><span class="book-icon">🌐</span><span class="book-body"><span class="book-title"><a href="https://d2l.ai/chapter_attention-mechanisms-and-transformers/index.html" target="_blank">Dive into Deep Learning – Attention</a></span><span class="book-detail">d2l.ai · ZDARMA</span><span class="book-extract"><strong>Co číst:</strong> Kap. 11.1–11.3 – matematika attention s kódem vedle sebe.</span></span></div>
         </div>
       </div>
+      <div class="lesson-resources"><span class="lesson-resources-label">📚 Zdroje</span><a href="https://jalammar.github.io/illustrated-transformer/" target="_blank">Illustrated Transformer</a> · <a href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank">Karpathy – Let's build GPT</a> · <a href="https://arxiv.org/abs/1706.03762" target="_blank">Attention is All You Need (paper)</a></div>
       <div class="section">
         <div class="section-title">Výstup lekce</div>
         <div class="output-box"><strong>✓ Deliverable</strong><code>L3_transformer.ipynb</code> – tokenizace + attention heatmapa + TransformerBlock. Commitni: <code>git add . && git commit -m "L3: transformer + attention from scratch"</code></div>
@@ -1826,6 +1833,7 @@ for step in range(200):
           <div class="book"><span class="book-icon">🌐</span><span class="book-body"><span class="book-title"><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank">Anthropic Prompt Engineering Docs</a></span><span class="book-detail">docs.anthropic.com · ZDARMA · průběžně aktualizováno</span><span class="book-extract"><strong>Co číst:</strong> Overview + CoT + XML tags + Extended Thinking. Nejdetailnější technický pohled na interpretaci promptů.</span></span></div>
         </div>
       </div>
+      <div class="lesson-resources"><span class="lesson-resources-label">📚 Zdroje</span><a href="https://www.promptingguide.ai" target="_blank">DAIR.AI – Prompt Engineering Guide</a> · <a href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank">DeepLearning.AI – Prompt Engineering (free)</a> · <a href="https://github.com/openai/openai-cookbook" target="_blank">OpenAI Cookbook</a></div>
       <div class="section">
         <div class="section-title">Výstup lekce</div>
         <div class="output-box"><strong>✓ Deliverable</strong>Textový soubor s výsledky 6 technik pro jeden úkol – co fungovalo, co ne, proč.</div>
@@ -2128,6 +2136,95 @@ def safe_chat(user_input: str) -> str:
         <div class="tip-box" style="margin-top:8px"><strong>Více zdrojů</strong><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank">OWASP Top 10 for LLM Applications</a> – standard pro AI security. Přečti před L17 (architektura projektu).</div>
       </div>
       <div class="section">
+        <div class="section-title">Pokročilé techniky</div>
+        <ul class="steps">
+          <li class="step"><span class="step-num">A</span><span class="step-content"><strong>Async API – zpracuj 10 dotazů najednou</strong>
+<br>Synchronní volání API jde jedno po druhém → pomalé. <code>asyncio.gather()</code> posílá všechna volání najednou a čeká na odpovědi paralelně. V produkci je to <strong>5–10× rychlejší</strong> než sekvenční loop.
+<br>💻 <strong>Nakóduj:</strong>
+<br><code>import asyncio</code>
+<br><code>from openai import AsyncOpenAI</code>
+<br><code></code>
+<br><code>async_client = AsyncOpenAI()  # async verze klienta</code>
+<br><code></code>
+<br><code>async def ask_async(prompt: str, model="gpt-4.1-mini") -> str:</code>
+<br><code>    r = await async_client.chat.completions.create(</code>
+<br><code>        model=model,</code>
+<br><code>        messages=[{"role": "user", "content": prompt}]</code>
+<br><code>    )</code>
+<br><code>    return r.choices[0].message.content</code>
+<br><code></code>
+<br><code>async def batch_eval(prompts: list[str]) -> list[str]:</code>
+<br><code>    tasks = [ask_async(p) for p in prompts]</code>
+<br><code>    return await asyncio.gather(*tasks)  # vše najednou!</code>
+<br><code></code>
+<br><code># Porovnej čas: sekvenční vs. paralelní</code>
+<br><code>import time</code>
+<br><code>produkty = ["Nike Air Max", "Adidas Ultraboost", "New Balance 990",</code>
+<br><code>            "ASICS Gel-Kayano", "Saucony Kinvara"]</code>
+<br><code>dotazy = [f"Kategorizuj produkt: {p}" for p in produkty]</code>
+<br><code></code>
+<br><code>start = time.time()</code>
+<br><code>vysledky = asyncio.run(batch_eval(dotazy))</code>
+<br><code>print(f"Async: {time.time()-start:.1f}s | {len(vysledky)} výsledků")</code>
+<br>Použij async přístup v L18 pro FastAPI endpoint který zpracovává více požadavků najednou.</span></li>
+          <li class="step"><span class="step-num">B</span><span class="step-content"><strong>Cost optimization – jak nespálit API kredit</strong>
+<br>Čtyři techniky jak dramaticky snížit náklady na API:
+<br><br><strong>1. Správný model pro úkol</strong>
+<br><code>gpt-4.1-nano</code> = $0.10/1M tokenů · pro jednoduché klasifikace<br><code>gpt-4.1-mini</code> = $0.40/1M tokenů · pro většinu vývojových úloh<br><code>gpt-4.1</code> = $2.00/1M tokenů · jen pro komplexní reasoning v produkci
+<br><br><strong>2. Počítej tokeny před odesláním</strong>
+<br><code>import tiktoken</code>
+<br><code>enc = tiktoken.encoding_for_model("gpt-4.1-mini")</code>
+<br><code>def count_tokens(text: str) -> int:</code>
+<br><code>    return len(enc.encode(text))</code>
+<br><code>print(f"Prompt: {count_tokens(muj_prompt)} tokenů")  # zkontroluj před odesláním</code>
+<br><br><strong>3. Prompt compression – méně tokenů, stejný výsledek</strong>
+<br><code># Špatně: "Prosím, mohl bys mi pomoci s kategorizací tohoto produktu?"</code>
+<br><code># Dobře:  "Kategorizuj produkt:"</code>
+<br><code># Odstraň zbytečné "zdvořilosti" ze system promptu – model jim nerozumí lépe</code>
+<br><br><strong>4. Caching – stejný prompt = stejný výsledek</strong>
+<br><code>import hashlib, json</code>
+<br><code>_cache = {}</code>
+<br><code>def ask_cached(prompt: str) -> str:</code>
+<br><code>    key = hashlib.md5(prompt.encode()).hexdigest()</code>
+<br><code>    if key not in _cache:</code>
+<br><code>        _cache[key] = ask(prompt)  # volej API jen jednou</code>
+<br><code>    return _cache[key]</code>
+<br><code># V produkci: nahraď dict Redis cachí (TTL 24 h)</code>
+<br><div class="tip-box" style="margin-top:8px"><strong>Pravidlo</strong>Začni vždy s <code>gpt-4.1-nano</code>. Pokud výsledky nestačí, přejdi na mini. Přejdi na plný gpt-4.1 jen tam kde to opravdu potřebuješ. Ušetříš 95 % nákladů.</div></span></li>
+          <li class="step"><span class="step-num">C</span><span class="step-content"><strong>Multimodal – Vision API (analýza obrázků)</strong>
+<br>GPT-4o a Claude 3 umí analyzovat obrázky – screenshoty, fotky produktů, grafy, dokumenty. Multimodální modely jsou stále populárnější pro produkční aplikace.
+<br>💻 <strong>Nakóduj:</strong>
+<br><code>import base64</code>
+<br><code>from pathlib import Path</code>
+<br><code></code>
+<br><code>def encode_image(path: str) -> str:</code>
+<br><code>    return base64.b64encode(Path(path).read_bytes()).decode()</code>
+<br><code></code>
+<br><code>def analyze_image(image_path: str, question: str) -> str:</code>
+<br><code>    b64 = encode_image(image_path)</code>
+<br><code>    r = client.chat.completions.create(</code>
+<br><code>        model="gpt-4o",  # nebo "claude-3-5-sonnet" přes Anthropic SDK</code>
+<br><code>        messages=[{</code>
+<br><code>            "role": "user",</code>
+<br><code>            "content": [</code>
+<br><code>                {"type": "image_url",</code>
+<br><code>                 "image_url": {"url": f"data:image/jpeg;base64,{b64}"}},</code>
+<br><code>                {"type": "text", "text": question}</code>
+<br><code>            ]</code>
+<br><code>        }]</code>
+<br><code>    )</code>
+<br><code>    return r.choices[0].message.content</code>
+<br><code></code>
+<br><code># Příklad: analyzuj screenshot e-shopu</code>
+<br><code>popis = analyze_image("screenshot.jpg",</code>
+<br><code>    "Jaké produkty vidíš na tomto screenshotu e-shopu? Uveď kategorie.")</code>
+<br><code>print(popis)</code>
+<br><strong>Url obrázky</strong> – místo base64 můžeš předat URL: <code>"url": "https://example.com/image.jpg"</code><br>
+<strong>Claude Vision</strong> – přes Anthropic SDK stejná syntaxe, model <code>claude-3-5-sonnet-20241022</code></span></li>
+        </ul>
+      </div>
+      <div class="lesson-resources"><span class="lesson-resources-label">📚 Zdroje</span><a href="https://github.com/openai/openai-cookbook" target="_blank">OpenAI Cookbook</a> · <a href="https://platform.openai.com/docs/guides/structured-outputs" target="_blank">Structured Outputs docs</a> · <a href="https://platform.openai.com/tokenizer" target="_blank">OpenAI Tokenizer</a></div>
+      <div class="section">
         <div class="section-title">Výstup lekce</div>
         <div class="output-box"><strong>✓ Deliverable</strong><code>L6_prompts.ipynb</code> + <code>eval.py</code> + <code>eval_results.csv</code>. Commitni: <code>git add . && git commit -m "L6: prompt eval pipeline + structured outputs"</code></div>
       </div>
@@ -2349,6 +2446,7 @@ def safe_chat(user_input: str) -> str:
           <div class="book"><span class="book-icon">🌐</span><span class="book-body"><span class="book-title"><a href="https://platform.openai.com/docs/api-reference/responses" target="_blank">OpenAI Responses API</a></span><span class="book-detail">platform.openai.com · ZDARMA · nový standard 2025</span><span class="book-extract"><strong>Co číst:</strong> Celá reference – nástupce chat.completions pro agentní použití. Budeš potřebovat v L16+.</span></span></div>
         </div>
       </div>
+      <div class="lesson-resources"><span class="lesson-resources-label">📚 Zdroje</span><a href="https://platform.openai.com/docs/guides/fine-tuning" target="_blank">OpenAI Fine-tuning docs</a> · <a href="https://www.deeplearning.ai/short-courses/finetuning-large-language-models/" target="_blank">DeepLearning.AI – Fine-tuning (free)</a> · <a href="https://wandb.ai/site/articles/a-gentle-introduction-to-lora" target="_blank">W&B – Intro to LoRA</a></div>
       <div class="section">
         <div class="section-title">Výstup lekce</div>
         <div class="output-box"><strong>✓ Deliverable</strong>Fine-tuned model na OpenAI + <code>benchmark.csv</code> (base vs. fine-tuned) + <code>llm_client.py</code>. Commitni.</div>
@@ -2497,6 +2595,7 @@ def safe_chat(user_input: str) -> str:
           <div class="book"><span class="book-icon">📘</span><span class="book-body"><span class="book-title"><a href="https://arxiv.org/abs/2305.14314" target="_blank">QLoRA paper – Dettmers et al.</a></span><span class="book-detail">arxiv.org · ZDARMA</span><span class="book-extract"><strong>Co číst:</strong> Abstract + Section 2. Proč QLoRA umožňuje fine-tuning 65B modelu na jednom GPU.</span></span></div>
         </div>
       </div>
+      <div class="lesson-resources"><span class="lesson-resources-label">📚 Zdroje</span><a href="https://huggingface.co/docs/peft" target="_blank">HuggingFace PEFT docs</a> · <a href="https://arxiv.org/abs/2106.09685" target="_blank">LoRA paper (arXiv)</a> · <a href="https://www.sbert.net" target="_blank">Sentence Transformers docs</a></div>
       <div class="section">
         <div class="section-title">Výstup lekce</div>
         <div class="output-box"><strong>✓ Deliverable</strong>Notebook s tokenizací + similarity heatmapa + LoRA Colab notebook (sdílený odkaz). Commitni.</div>
@@ -2576,6 +2675,31 @@ def safe_chat(user_input: str) -> str:
           </span></li>
         </ul>
       </div>
+      <div class="section">
+        <div class="section-title">Bonus: MLX na M3 Max</div>
+        <ul class="steps">
+          <li class="step"><span class="step-num">4</span><span class="step-content"><strong>MLX – Apple Silicon inference (2× rychlejší než Ollama)</strong>
+<br>MLX je Apple framework optimalizovaný pro M-čipy – využívá unified memory (RAM = VRAM). Na M3 Max je ~2× rychlejší než Ollama pro inferenci stejného modelu.
+<br>💻 <strong>Nakóduj:</strong>
+<br><code>pip install mlx-lm</code>
+<br><code></code>
+<br><code># Generuj text – model se stáhne z HuggingFace automaticky (~4 GB)</code>
+<br><code>mlx_lm.generate \</code>
+<br><code>  --model mlx-community/Mistral-7B-Instruct-v0.3-4bit \</code>
+<br><code>  --prompt "Co je RAG systém? Vysvětli jednoduše."</code>
+<br><br>Nebo z Pythonu:
+<br><code>from mlx_lm import load, generate</code>
+<br><code>model, tokenizer = load("mlx-community/Mistral-7B-Instruct-v0.3-4bit")</code>
+<br><code>response = generate(model, tokenizer, prompt="Co je RAG?", verbose=True)</code>
+<br><br><strong>Benchmark – porovnej rychlosti:</strong>
+<br><code>import time</code>
+<br><code># Ollama: ~30–40 tok/s na M3 Max</code>
+<br><code># MLX:   ~60–80 tok/s na M3 Max (2× rychlejší!)</code>
+<br><br>Modely pro MLX hledej na <a href="https://huggingface.co/mlx-community" target="_blank">huggingface.co/mlx-community</a> – jsou speciálně zkompilované pro Apple Silicon.<br>
+<strong>Kdy použít MLX vs Ollama:</strong> MLX = maximum rychlosti pro skriptování. Ollama = OpenAI-kompatibilní API, jednodušší integrace do existujícího kódu (L12+ RAG).</span></li>
+        </ul>
+      </div>
+      <div class="lesson-resources"><span class="lesson-resources-label">📚 Zdroje</span><a href="https://ollama.com/library" target="_blank">Ollama model library</a> · <a href="https://ml-explore.github.io/mlx/build/html/index.html" target="_blank">MLX docs (Apple)</a> · <a href="https://openwebui.com" target="_blank">Open WebUI (UI pro Ollama)</a></div>
       <div class="section">
         <div class="section-title">Výstup lekce</div>
         <div class="output-box"><strong>✓ Deliverable</strong>Funkční Ollama s aspoň 2 modely + benchmark notebook (lokální vs. cloud: čas, kvalita, cena).</div>
@@ -2683,6 +2807,7 @@ def safe_chat(user_input: str) -> str:
         </div>
         <div class="tip-box" style="margin-top:8px"><strong>Pro kurz:</strong> Používej <strong>ChromaDB</strong> (nejjednodušší na M3, žádné instalační problémy). Pro finální projekt v L17–18 zvaž <strong>pgvector</strong> pokud máš PostgreSQL, nebo <strong>Pinecone</strong> pro cloud deploy bez správy infrastruktury.</div>
       </div>
+      <div class="lesson-resources"><span class="lesson-resources-label">📚 Zdroje</span><a href="https://python.langchain.com/docs/tutorials/rag/" target="_blank">LangChain RAG tutorial</a> · <a href="https://www.youtube.com/watch?v=8OJC21T2SL4" target="_blank">Greg Kamradt – Chunking Strategies</a> · <a href="https://docs.trychroma.com" target="_blank">ChromaDB docs</a></div>
       <div class="section">
         <div class="section-title">Výstup lekce</div>
         <div class="output-box"><strong>✓ Deliverable</strong>Funkční RAG nad vlastními dokumenty (JIC nebo Evina móda) + uložený FAISS index. Commitni.</div>
@@ -2878,6 +3003,7 @@ def safe_chat(user_input: str) -> str:
           </span></li>
         </ul>
       </div>
+      <div class="lesson-resources"><span class="lesson-resources-label">📚 Zdroje</span><a href="https://langchain-ai.github.io/langgraph/" target="_blank">LangGraph docs</a> · <a href="https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/" target="_blank">DeepLearning.AI – AI Agents in LangGraph (free)</a> · <a href="https://docs.smith.langchain.com" target="_blank">LangSmith docs</a></div>
       <div class="section">
         <div class="section-title">Výstup lekce</div>
         <div class="output-box"><strong>✓ Deliverable</strong>LangGraph agent s nástroji + pamětí + human-in-the-loop + LangSmith screenshot. Commitni.</div>
@@ -3255,6 +3381,7 @@ def test_answer_is_concise():
           </span></li>
         </ul>
       </div>
+      <div class="lesson-resources"><span class="lesson-resources-label">📚 Zdroje</span><a href="https://fastapi.tiangolo.com" target="_blank">FastAPI docs</a> · <a href="https://railway.app/templates" target="_blank">Railway templates</a> · <a href="https://docs.docker.com/get-started/" target="_blank">Docker Getting Started</a></div>
       <div class="section">
         <div class="section-title">Výstup lekce</div>
         <div class="output-box"><strong>✓ Deliverable</strong>Živý agent na Railway URL + GitHub repo s README (architektura, jak spustit, co umí). Sdílej na LinkedIn – toto je tvoje portfolio piece.</div>
@@ -3845,6 +3972,52 @@ def test_answer_is_concise():
     <div class="crosscut-item"><strong><a href="https://www.anthropic.com/research" target="_blank">Anthropic Research blog</a></strong><span>anthropic.com/research · AI safety, Claude, agentic AI</span></div>
     <div class="crosscut-item"><strong><a href="https://modelcontextprotocol.io/introduction" target="_blank">MCP – Model Context Protocol</a></strong><span>modelcontextprotocol.io · nový standard pro nástroje agentů</span></div>
     <div class="crosscut-item"><strong><a href="https://openai.com/research" target="_blank">OpenAI Research blog</a></strong><span>openai.com/research · nové modely, papers, changelog</span></div>
+  </div>
+</div>
+
+<!-- ══════════════ KOMUNITA ══════════════ -->
+<div class="collapsible" id="komunita" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;margin-top:16px;margin-bottom:24px">
+  <div class="collapsible-header" onclick="toggle('komunita')" style="border-radius:12px">
+    <div>
+      <h2 style="font-size:14px;font-weight:600;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin:0">🌐 Komunita – kde se učit s ostatními</h2>
+      <p style="font-size:12.5px;color:var(--text-muted);margin:2px 0 0">Discord servery, subreddity, newslettery pro AI vývojáře</p>
+    </div>
+    <span class="chevron">▶</span>
+  </div>
+  <div class="collapsible-body">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:4px">
+      <!-- Discord -->
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--purple-600);margin-bottom:10px">💬 Discord</div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:7px;padding:10px 12px;font-size:12.5px"><strong><a href="https://discord.gg/hugging-face-879548962464493619" target="_blank">Hugging Face</a></strong><br><span style="color:var(--text-muted)">Největší AI/ML komunita. Kanály pro každý framework, modely, papery.</span></div>
+          <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:7px;padding:10px 12px;font-size:12.5px"><strong><a href="https://discord.gg/langchain" target="_blank">LangChain</a></strong><br><span style="color:var(--text-muted)">Podpora, tipy, ukázky projektů. Vývojáři frameworku jsou aktivní.</span></div>
+          <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:7px;padding:10px 12px;font-size:12.5px"><strong><a href="https://discord.gg/ollama" target="_blank">Ollama</a></strong><br><span style="color:var(--text-muted)">Komunita kolem lokálních modelů. Dobrý pro M-chip specifické otázky.</span></div>
+          <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:7px;padding:10px 12px;font-size:12.5px"><strong><a href="https://discord.gg/openai" target="_blank">OpenAI Developer</a></strong><br><span style="color:var(--text-muted)">Oficiální Discord. API novinky, tipy na prompt engineering.</span></div>
+        </div>
+      </div>
+      <!-- Reddit -->
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--teal-600);margin-bottom:10px">🔴 Reddit</div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:7px;padding:10px 12px;font-size:12.5px"><strong><a href="https://reddit.com/r/LocalLLaMA" target="_blank">r/LocalLLaMA</a></strong><br><span style="color:var(--text-muted)">Nejaktivnější komunita pro lokální modely, Ollama, MLX, benchmarky.</span></div>
+          <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:7px;padding:10px 12px;font-size:12.5px"><strong><a href="https://reddit.com/r/MachineLearning" target="_blank">r/MachineLearning</a></strong><br><span style="color:var(--text-muted)">Akademičtější, nové papery, diskuze o výzkumu. 2M+ členů.</span></div>
+          <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:7px;padding:10px 12px;font-size:12.5px"><strong><a href="https://reddit.com/r/LangChain" target="_blank">r/LangChain</a></strong><br><span style="color:var(--text-muted)">Projekty, tipy, debugging LangChain a LangGraph aplikací.</span></div>
+          <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:7px;padding:10px 12px;font-size:12.5px"><strong><a href="https://reddit.com/r/OpenAI" target="_blank">r/OpenAI</a></strong><br><span style="color:var(--text-muted)">Novinky, use cases, diskuze o GPT modelech a API.</span></div>
+        </div>
+      </div>
+      <!-- Newslettery -->
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--amber-600);margin-bottom:10px">📧 Newslettery</div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:7px;padding:10px 12px;font-size:12.5px"><strong><a href="https://magazine.sebastianraschka.com" target="_blank">Ahead of AI</a></strong><br><span style="color:var(--text-muted)">Sebastian Raschka. Nejlepší technický AI newsletter. Týdenní souhrn papers + praktika. Free.</span></div>
+          <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:7px;padding:10px 12px;font-size:12.5px"><strong><a href="https://www.deeplearning.ai/the-batch/" target="_blank">The Batch</a></strong><br><span style="color:var(--text-muted)">DeepLearning.AI. Andrew Ng. Týdenní novinky ze světa AI. Vyvážený pohled.</span></div>
+          <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:7px;padding:10px 12px;font-size:12.5px"><strong><a href="https://tldr.tech/ai" target="_blank">TLDR AI</a></strong><br><span style="color:var(--text-muted)">Denní 5minutový přehled nejdůležitějšího. Dobré na ranní přečtení. Free.</span></div>
+          <div style="background:var(--gray-50);border:1px solid var(--border);border-radius:7px;padding:10px 12px;font-size:12.5px"><strong><a href="https://www.aisnakeoil.com" target="_blank">AI Snake Oil</a></strong><br><span style="color:var(--text-muted)">Kritický pohled na AI hype. Pomáhá rozlišit co skutečně funguje od marketingu.</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:10px 14px;background:var(--teal-50);border:1px solid var(--teal-200);border-radius:7px;font-size:12.5px"><strong style="color:var(--teal-600);font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:4px">Tip jak sledovat komunity efektivně</strong>Nepřidávej se do všeho najednou – začni s r/LocalLLaMA a jedním newsletterem (doporučuji Ahead of AI). Komunity přidávej postupně jak budeš potřebovat pomoc s konkrétními technologiemi.</div>
   </div>
 </div>
 
