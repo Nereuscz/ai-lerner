@@ -297,6 +297,7 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
     <a class="toc-item" href="#jupyter">📓 JupyterLab průvodce<span>Buňky, zkratky, kernel</span></a>
     <a class="toc-item" href="#progress">✅ Progress tracker<span>Odškrtávej dokončené</span></a>
     <a class="toc-item" href="#devtools">🛠 Dev nástroje<span>Git, VS Code, Cursor Pro+</span></a>
+    <a class="toc-item" href="#jazyky">💬 Jazyky &amp; technologie<span>Co se naučit a v jakém pořadí</span></a>
     <a class="toc-item" href="#openai-models">🧠 OpenAI modely<span>GPT-4.1, o3, o4-mini – kdy co</span></a>
     <a class="toc-item" href="#anthropic-models">🟣 Anthropic Claude<span>Opus, Sonnet, Haiku – API stack</span></a>
     <a class="toc-item" href="#blok1">🔵 Blok 1 – Jak fungují LLM<span>L1–L4 · neurony, transformery</span></a>
@@ -639,6 +640,75 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
     </div>
 
   </div>
+</div>
+
+<!-- ══════════ JAZYKY A TECHNOLOGIE ══════════ -->
+<div class="devtools-section" id="jazyky">
+  <h2>💬 Jazyky a technologie – co se naučit a v jakém pořadí</h2>
+  <p>Jako AI developer nepotřebuješ znát všechno. Tady je přehled co je nutné, co se hodí, a co klidně přeskočit – s vazbou na konkrétní lekce kurzu.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px">
+
+    <div style="background:var(--teal-50);border:2px solid var(--teal-600);border-radius:10px;padding:14px 16px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-600);margin-bottom:8px">Nutné · hned</div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:13px">
+        <div><strong>Python 3.12</strong> – 90 % veškerého AI kódu. Každá lekce L1–L19. Úroveň: OOP, list comprehensions, decoratory, async.</div>
+        <div><strong>Bash / Zsh</strong> – terminál pro spouštění skriptů, git, pip, venv. Základy stačí: cd, ls, grep, pipes. Od Den 1.</div>
+        <div><strong>Markdown</strong> – README, prompty, dokumentace. 15 minut a umíš ho. Nutný pro GitHub a Jupyter.</div>
+      </div>
+    </div>
+
+    <div style="background:var(--amber-50);border:2px solid var(--amber-200);border-radius:10px;padding:14px 16px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-600);margin-bottom:8px">Doporučené · postupně</div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:13px">
+        <div><strong>SQL</strong> – pro práci s daty a vektorovými databázemi (pgvector v L12–13). Základy: SELECT, WHERE, JOIN. Nauč se souběžně s L7.</div>
+        <div><strong>YAML / TOML</strong> – konfigurace (Docker Compose, pyproject.toml, CI/CD). Přečteš snadno, nevyžaduje učení – stačí praxe.</div>
+        <div><strong>HTTP / REST API</strong> – jak fungují GET/POST requesty, JSON, status kódy. Nutné pro L6 (OpenAI API) a L18 (FastAPI).</div>
+      </div>
+    </div>
+
+    <div style="background:var(--gray-50);border:1px solid var(--gray-100);border-radius:10px;padding:14px 16px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Volitelné · dle projektu</div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:13px">
+        <div><strong>TypeScript / JS</strong> – pokud budeš stavět webový frontend pro svého agenta. Streamlit (Python) ti to v L18 odpustí. Řeš až po kurzu.</div>
+        <div><strong>HTML / CSS</strong> – pouze pokud nechceš Streamlit a chceš vlastní UI. Jinak zbytečné.</div>
+        <div><strong>Rust / Go</strong> – pro systémové nástroje (uv je v Rustu). Pro AI engineering nepotřebné.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-size:13px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">Časová osa učení</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;font-size:12px">
+      <div style="background:var(--teal-50);padding:10px 12px;border-right:1px solid var(--border)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;color:var(--teal-600);margin-bottom:5px">Před kurzem</div>
+        Python základy<br>Bash terminál<br>Git init/push
+      </div>
+      <div style="background:var(--purple-50);padding:10px 12px;border-right:1px solid var(--border)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;color:var(--purple-600);margin-bottom:5px">L1–L4</div>
+        Python NumPy<br>Python PyTorch<br>Markdown
+      </div>
+      <div style="background:var(--blue-50);padding:10px 12px;border-right:1px solid var(--border)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;color:var(--blue-600);margin-bottom:5px">L5–L10</div>
+        HTTP / REST API<br>Python Pydantic<br>YAML konfig
+      </div>
+      <div style="background:var(--amber-50);padding:10px 12px;border-right:1px solid var(--border)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;color:var(--amber-600);margin-bottom:5px">L11–L15</div>
+        SQL základy<br>Python async<br>Docker základy
+      </div>
+      <div style="background:var(--green-50);padding:10px 12px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;color:var(--green-600);margin-bottom:5px">L16–L19</div>
+        FastAPI (Python)<br>Streamlit (Python)<br>TOML / env vars
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:10px;background:var(--purple-50);border:1px solid var(--purple-200);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.6">
+    <strong style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--purple-600);display:block;margin-bottom:4px">Klíčový poznatek</strong>
+    AI Engineer v roce 2026 = <strong>Python developer který rozumí LLM</strong>. Neučíš se nový jazyk – prohlubuješ Python a přidáváš AI vrstvu. Pokud umíš proměnné, funkce a cykly, máš všechno co potřebuješ pro start. Zbytek se naučíš praxí při plnění lekcí.
+  </div>
+
 </div>
 
 <div class="connector"><div class="connector-line"></div></div>
