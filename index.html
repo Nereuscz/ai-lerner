@@ -257,6 +257,17 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
 .legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
 .dot-purple{background:var(--purple-600)}.dot-teal{background:var(--teal-600)}.dot-coral{background:var(--coral-600)}.dot-blue{background:var(--blue-600)}
 
+/* COLLAPSIBLE SECTIONS */
+.collapsible{border-radius:12px;margin-bottom:32px;overflow:hidden}
+.collapsible-header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;cursor:pointer;user-select:none;transition:filter .15s}
+.collapsible-header:hover{filter:brightness(.97)}
+.collapsible-header h2{font-size:15px;font-weight:600;margin:0}
+.collapsible-header p{font-size:13px;margin:2px 0 0;opacity:.75}
+.collapsible-header .chevron{font-size:11px;color:inherit;opacity:.6;transition:transform .2s;flex-shrink:0;margin-left:12px}
+.collapsible.open .collapsible-header .chevron{transform:rotate(90deg)}
+.collapsible-body{display:none;padding:0 24px 22px}
+.collapsible.open .collapsible-body{display:block}
+
 @media(max-width:580px){
   .crosscut-grid{grid-template-columns:1fr}
   .jupyter-grid{grid-template-columns:1fr}
@@ -343,10 +354,16 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
 </div>
 
 <!-- ══════════════ MAC SETUP ══════════════ -->
-<div class="mac-setup" id="setup">
-  <h2>🍎 Setup prostředí – MacBook Pro M3 Max, 36 GB</h2>
-  <p>Máš výjimečný stroj. <strong>M3 Max se 36 GB unified memory</strong> znamená, že můžeš spouštět 7B–13B modely lokálně bez cloudu a bez API nákladů. Níže jsou kroky přizpůsobené přímo tvému hardwaru.</p>
-  <ul class="mac-steps">
+<div class="collapsible mac-setup" id="setup">
+  <div class="collapsible-header" onclick="toggle('setup')" style="margin:-22px -24px 0;padding:16px 24px;border-radius:12px 12px 0 0">
+    <div>
+      <h2>🍎 Setup prostředí – MacBook Pro M3 Max, 36 GB</h2>
+      <p>Homebrew, pyenv, Python 3.12, Cursor, Ollama, MLX – krok za krokem</p>
+    </div>
+    <span class="chevron">▶</span>
+  </div>
+  <div class="collapsible-body">
+  <ul class="mac-steps" style="margin-top:16px">
     <li class="mac-step"><span class="mac-step-num">1</span><span>Nainstaluj <strong>Homebrew</strong> – správce balíčků pro Mac. Otevři Terminal (Cmd+Space → „Terminal") a spusť:<br><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code><br>⚠️ Na M3 (Apple Silicon) je Homebrew v <code>/opt/homebrew/</code> – ne v <code>/usr/local/</code> jako na Intel Macu. Po instalaci přidej do PATH – installer ti to řekne přesně. Typicky: <code>echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc && source ~/.zshrc</code><br>Dokumentace: <a href="https://brew.sh" target="_blank">brew.sh</a></span></li>
     <li class="mac-step"><span class="mac-step-num">2</span><span>Nainstaluj <strong>pyenv</strong> – správce verzí Pythonu:<br><code>brew install pyenv</code><br>Přidej do <code>~/.zshrc</code> tyto tři řádky:<br><code>export PYENV_ROOT="$HOME/.pyenv"</code><br><code>export PATH="$PYENV_ROOT/bin:$PATH"</code><br><code>eval "$(pyenv init -)"</code><br>Pak: <code>source ~/.zshrc</code><br>Dokumentace: <a href="https://github.com/pyenv/pyenv#installation" target="_blank">github.com/pyenv/pyenv</a></span></li>
     <li class="mac-step"><span class="mac-step-num">3</span><span>Nainstaluj <strong>Python 3.12</strong>:<br><code>pyenv install 3.12.5 && pyenv global 3.12.5</code><br>Ověř: <code>python --version</code> → Python 3.12.5<br>✅ Na M3 Max se Python kompiluje nativně pro ARM – je výrazně rychlejší než na Intel Macu. PyTorch i NumPy využijí plný výkon čipu.</span></li>
@@ -370,12 +387,19 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
       <li>Při vývoji agentů (L14–L15) používej Ollama jako backend místo OpenAI API – <strong>šetříš stovky Kč na API nákladech</strong></li>
     </ul>
   </div>
+  </div><!-- /collapsible-body -->
 </div>
 
 <!-- ══════════════ TROUBLESHOOTING ══════════════ -->
-<div style="background:var(--coral-50);border:1px solid var(--coral-200);border-radius:12px;padding:22px 24px;margin-bottom:32px" id="troubleshooting">
-  <h2 style="font-size:15px;font-weight:600;margin-bottom:4px">🚨 Troubleshooting – co dělat když něco nefunguje</h2>
-  <p style="font-size:13px;color:var(--text-muted);margin-bottom:14px">Nejčastější chyby začínajících AI developerů a jejich řešení. Záložka do prohlížeče – budeš se sem vracet.</p>
+<div class="collapsible" id="troubleshooting" style="background:var(--coral-50);border:1px solid var(--coral-200);margin-bottom:32px">
+  <div class="collapsible-header" onclick="toggle('troubleshooting')" style="border-radius:12px">
+    <div>
+      <h2>🚨 Troubleshooting – co dělat když něco nefunguje</h2>
+      <p>ImportError, NaN loss, API chyby, Ollama, Jupyter kernel – rychlá řešení</p>
+    </div>
+    <span class="chevron">▶</span>
+  </div>
+  <div class="collapsible-body">
   <div style="display:flex;flex-direction:column;gap:8px">
 
     <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px">
@@ -434,6 +458,7 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
     </div>
 
   </div>
+  </div><!-- /collapsible-body -->
 </div>
 
 <!-- ══════════════ JUPYTERLAB PRŮVODCE ══════════════ -->
