@@ -293,6 +293,7 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
   <h2>Obsah</h2>
   <div class="toc-grid">
     <a class="toc-item" href="#setup">🍎 Mac setup<span>Homebrew, pyenv, Cursor</span></a>
+    <a class="toc-item" href="#troubleshooting">🚨 Troubleshooting<span>Časté chyby a jejich řešení</span></a>
     <a class="toc-item" href="#jupyter">📓 JupyterLab průvodce<span>Buňky, zkratky, kernel</span></a>
     <a class="toc-item" href="#progress">✅ Progress tracker<span>Odškrtávej dokončené</span></a>
     <a class="toc-item" href="#devtools">🛠 Dev nástroje<span>Git, VS Code, Cursor Pro+</span></a>
@@ -367,6 +368,70 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
       <li>Embeddingy a inference HuggingFace modelů (<code>distilbert</code>, <code>sentence-transformers</code>) lokálně, instantně</li>
       <li>Při vývoji agentů (L14–L15) používej Ollama jako backend místo OpenAI API – <strong>šetříš stovky Kč na API nákladech</strong></li>
     </ul>
+  </div>
+</div>
+
+<!-- ══════════════ TROUBLESHOOTING ══════════════ -->
+<div style="background:var(--coral-50);border:1px solid var(--coral-200);border-radius:12px;padding:22px 24px;margin-bottom:32px" id="troubleshooting">
+  <h2 style="font-size:15px;font-weight:600;margin-bottom:4px">🚨 Troubleshooting – co dělat když něco nefunguje</h2>
+  <p style="font-size:13px;color:var(--text-muted);margin-bottom:14px">Nejčastější chyby začínajících AI developerů a jejich řešení. Záložka do prohlížeče – budeš se sem vracet.</p>
+  <div style="display:flex;flex-direction:column;gap:8px">
+
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px">
+      <strong style="display:block;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral-600);text-transform:uppercase;letter-spacing:.06em">ModuleNotFoundError / ImportError</strong>
+      <code>ModuleNotFoundError: No module named 'openai'</code><br>
+      <strong>Příčina:</strong> Balíček není nainstalovaný ve tvém aktivním venv.<br>
+      <strong>Řešení:</strong> 1) Zkontroluj, že je venv aktivní – vidíš <code>(.venv)</code> v promptu? 2) Spusť <code>pip install openai</code>. 3) Pokud používáš Jupyter, restartuj kernel (Kernel → Restart).
+    </div>
+
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px">
+      <strong style="display:block;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral-600);text-transform:uppercase;letter-spacing:.06em">Loss je NaN nebo Inf (L2, L3)</strong>
+      <code>Loss: nan</code> nebo <code>Loss: inf</code> po pár krocích trénování.<br>
+      <strong>Příčina:</strong> Learning rate je příliš velký – váhy explodují.<br>
+      <strong>Řešení:</strong> Zmenši learning rate 10×. Např. <code>lr=0.1</code> → <code>lr=0.01</code>. Pokud stále NaN, zkus inicializovat váhy <code>* 0.01</code> místo <code>* 0.1</code>.
+    </div>
+
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px">
+      <strong style="display:block;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral-600);text-transform:uppercase;letter-spacing:.06em">OpenAI API chyba – AuthenticationError</strong>
+      <code>AuthenticationError: No API key provided</code><br>
+      <strong>Příčina:</strong> API klíč není načtený.<br>
+      <strong>Řešení:</strong> 1) Zkontroluj, že <code>.env</code> soubor existuje a obsahuje <code>OPENAI_API_KEY=sk-...</code>. 2) Ujisti se, že voláš <code>load_dotenv()</code> před prvním API voláním. 3) Ověř: <code>import os; print(os.getenv("OPENAI_API_KEY"))</code> – nesmí být None.
+    </div>
+
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px">
+      <strong style="display:block;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral-600);text-transform:uppercase;letter-spacing:.06em">OpenAI API – RateLimitError</strong>
+      <code>RateLimitError: You exceeded your current quota</code><br>
+      <strong>Příčina:</strong> Buď nemáš kredit na účtu, nebo přesahuješ limity volání.<br>
+      <strong>Řešení:</strong> 1) Zkontroluj kredit na <a href="https://platform.openai.com/usage" target="_blank">platform.openai.com/usage</a>. 2) Pro experimenty používej <code>gpt-4.1-nano</code> (nejlevnější) nebo lokální Ollama (zdarma).
+    </div>
+
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px">
+      <strong style="display:block;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral-600);text-transform:uppercase;letter-spacing:.06em">Ollama – connection refused (L11+)</strong>
+      <code>ConnectionError: http://localhost:11434 – connection refused</code><br>
+      <strong>Příčina:</strong> Ollama aplikace neběží.<br>
+      <strong>Řešení:</strong> Otevři aplikaci Ollama (Applications → Ollama) nebo spusť <code>ollama serve</code> v Terminálu. Ověř: <code>curl http://localhost:11434/api/tags</code> – mělo by vrátit JSON se seznamem modelů.
+    </div>
+
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px">
+      <strong style="display:block;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral-600);text-transform:uppercase;letter-spacing:.06em">Jupyter kernel se zasekl nebo nereaguje</strong>
+      <strong>Příčina:</strong> Nekonečná smyčka, velký výpočet, nebo zaseklý API call.<br>
+      <strong>Řešení:</strong> 1) Zmáčkni <code>■ Stop</code> (čtvereček vedle buňky) nebo <code>Kernel → Interrupt</code>. 2) Pokud nereaguje: <code>Kernel → Restart Kernel</code>. 3) Po restartu musíš znovu spustit všechny buňky od začátku (<code>Run → Run All Cells Above</code>).
+    </div>
+
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px">
+      <strong style="display:block;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral-600);text-transform:uppercase;letter-spacing:.06em">FAISS instalace selhala na Macu (L12)</strong>
+      <code>ERROR: Could not build wheels for faiss-cpu</code><br>
+      <strong>Řešení:</strong> Na Apple Silicon Macu použij: <code>pip install faiss-cpu --no-binary faiss-cpu</code> nebo alternativně <code>pip install chromadb</code> (ChromaDB funguje na M3 bez problémů a je dobrá náhrada za FAISS).
+    </div>
+
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px">
+      <strong style="display:block;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral-600);text-transform:uppercase;letter-spacing:.06em">Obecná strategie při jakékoliv chybě</strong>
+      1. <strong>Přečti celou chybovou hlášku</strong> – poslední řádek je nejdůležitější.<br>
+      2. <strong>Zkopíruj chybu do Cursoru</strong> (Cmd+L) a zeptej se "co tato chyba znamená a jak ji opravím?"<br>
+      3. <strong>Hledej na Stack Overflow nebo GitHub Issues</strong> – 95 % chyb někdo řešil před tebou.<br>
+      4. <strong>Izoluj problém</strong> – zmenši kód na nejmenší možný příklad který stále chybuje.
+    </div>
+
   </div>
 </div>
 
@@ -886,8 +951,11 @@ bias = 0.1
 # np.dot = "dot product" = součin vektorů = přesně toto</span>
 z = np.dot(vstupy, vahy) + bias
 
-<span class="code-comment"># SIGMOID – přemění jakékoli číslo na hodnotu 0–1
-# Výsledek 0.7 znamená: "70% šance že je to pravda"</span>
+<span class="code-comment"># SIGMOID – aktivační funkce, přemění JAKÉKOLI číslo na hodnotu 0–1
+# Proč ji potřebujeme? Bez ní by síť byla jen lineární rovnice.
+# Sigmoid přidává "nelinearitu" = schopnost učit se složité vzory
+# Výsledek 0.7 znamená: "70% šance že je to pravda"
+# Matematicky: 1 / (1 + e^-z) ... zkus zadat z=0 → dostaneš 0.5 (neutrální)</span>
 vystup = 1 / (1 + np.exp(-z))
 
 print(f"Vážený součet z  = {z:.3f}")
@@ -1023,6 +1091,9 @@ print(y.T)</div>
     <strong>Gradient descent</strong> = algoritmus který říká: "změň váhy tímto směrem a o tolik, aby loss klesl".<br>
     <strong>Learning rate</strong> = jak velký krok děláme. Moc velký → přeskočíme nejlepší bod. Moc malý → trénování trvá věčně.</p>
   </div>
+  <div class="coding-section how" style="margin-bottom:0">
+    <div class="tip-box"><strong>Intuice gradientu</strong>Představ si, že stojíš na kopci ve mlze a chceš sejít do údolí (= minimální chyba). Gradient ti říká, <em>jakým směrem jde kopec nahoru</em> – ty jdeš opačně. Learning rate určuje, jak velký krok uděláš. Moc velký krok → přeskočíš údolí. Moc malý → nikdy nedojdeš. <strong>Backpropagation</strong> je jen efektivní způsob jak spočítat tento gradient pro tisíce vah najednou pomocí řetězového pravidla derivací.</div>
+  </div>
   <div class="coding-section">
     <div class="coding-section-label">Kód — nová buňka ve stejném notebooku (X, y, W1, W2 a sigmoid jsou stále v paměti z L1)</div>
 <div class="code-block">lr = 0.5   <span class="code-comment"># learning rate = velikost kroku</span>
@@ -1039,14 +1110,28 @@ for epoch in range(5000):
     if epoch % 500 == 0:
         print(f"Epoch {epoch:5d}: loss = {loss:.4f}")
 
-    <span class="code-comment"># 3. BACKWARD PASS: o kolik změnit váhy?
-    # (Nemusíš rozumět matematice – stačí vědět, že to funguje)</span>
-    dL  = 2 * (y_hat - y) / len(y)
-    dW2 = h.T @ (dL * y_hat * (1 - y_hat))
-    dH  = (dL * y_hat * (1 - y_hat)) @ W2.T
-    dW1 = X.T @ (dH * h * (1 - h))
+    <span class="code-comment"># ─── BACKWARD PASS ─────────────────────────────────────────────────
+    # Cíl: zjistit, jak moc každá váha přispěla k chybě
+    # Postup: jdeme od výstupu ZPÁTKY k vstupům (odtud "backpropagation")
+    # Derivace = říká "o kolik se výstup změní, když trochu posunu tuto váhu"</span>
 
-    <span class="code-comment"># 4. AKTUALIZACE: posun vah dolů po svahu</span>
+    <span class="code-comment"># Chyba výstupu – jak moc se lišíme od správné odpovědi
+    # dL/dy_hat = derivace MSE loss; * 2 je konstanta z (y-ŷ)²</span>
+    dL  = 2 * (y_hat - y) / len(y)
+
+    <span class="code-comment"># Gradient pro W2 – jak moc W2 způsobil chybu
+    # h.T = transponovaná matice výstupů první vrstvy
+    # * y_hat * (1 - y_hat) = derivace sigmoidu (je maximální u 0.5, nula u 0 a 1)</span>
+    dW2 = h.T @ (dL * y_hat * (1 - y_hat))
+
+    <span class="code-comment"># Gradient pro W1 – propagujeme chybu dál dozadu přes W2
+    # @ dW2.T = "kolik z té chyby prišlo přes W2?"
+    # * h * (1 - h) = znovu derivace sigmoidu pro první vrstvu</span>
+    dW1 = X.T @ ((dL * y_hat * (1 - y_hat)) @ dW2.T * h * (1 - h))
+
+    <span class="code-comment"># UPDATE VAH – posuneme váhy ve směru OPAČNÉM k gradientu
+    # lr = learning rate = jak velký krok uděláme (příliš velký → přeskočíme minimum)
+    # Intuice: jdeme "do kopce" gradientu, ale obráceně → najdeme minimum chyby</span>
     W2 -= lr * dW2
     W1 -= lr * dW1
 
@@ -1192,12 +1277,21 @@ print(f"Finální loss:   {losses[-1]:.4f}")</div>
     </ol>
   </div>
   <div class="coding-section">
+    <div class="tip-box"><strong>Co jsou Q, K, V (Query, Key, Value)?</strong>Attention mechanismus funguje jako vyhledávání v databázi:<br>
+• <strong>Query (Q)</strong> = "co hledám?" – otázka aktuálního tokenu<br>
+• <strong>Key (K)</strong> = "co nabízím?" – popis každého tokenu v sekvenci<br>
+• <strong>Value (V)</strong> = "co vrátím?" – skutečná informace tokenu<br><br>
+Příklad: Věta "Banka řeky je mokrá." Pro slovo "banka" je Q="co znamenám?", K každého okolního slova říká "jsem řeka/mokrý/mokrá", V vrátí relevantní kontext. Attention skóre = jak moc Q odpovídá každému K → víme na co se zaměřit.<br><br>
+<code>MultiheadAttention</code> dělá tento výpočet <em>paralelně</em> v několika "hlavách" – každá hlava se učí jiný typ vztahu (gramatický, sémantický, poziční...).</div>
     <div class="coding-section-label">Kód</div>
 <div class="code-block">import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
 
 <span class="code-comment"># Nastavení: 6 tokenů (slov), každý vyjádřen vektorem 64 čísel
+# Token ≠ slovo: GPT-4 tokenizuje "nepochopitelný" jako 3 tokeny: "nep","ochop","itelný"
+# Průměrně 1 token ≈ 0.75 slova v angličtině; v češtině více kvůli skloňování
+# Limit kontextového okna (např. 128k tokenů) je v tokenech, ne slovech
 # V reálném GPT-4 jsou vektory délky 12 288 – princip je stejný</span>
 pocet_tokenu = 6
 dimenze      = 64
@@ -1409,58 +1503,58 @@ print(f"GPT-3 má 96 takových bloků → {96 * pocet_parametru:,} parametrů (p
           <li class="step"><span class="step-num">1</span><span class="step-content"><strong>Bigram model – základ generování textu</strong>
 <br>📺 <strong>Sleduj celé:</strong> <a href="https://www.youtube.com/watch?v=PaCmpygFfXo" target="_blank">Karpathy: makemore Part 1</a> (~2 h). Karpathy kóduje bigram language model. Pauzy na pochopení, kód pište souběžně.
 <br>💻 <strong>Nakóduj – vlastní bigram model:</strong> Vytvoř <code>L4_makemore.ipynb</code>. Language model v základu = tabulka pravděpodobností: jak pravděpodobně přijde znak B po znaku A:
-<br><code>import numpy as np</code>
-<br><code># Stáhni dataset: wget https://raw.githubusercontent.com/karpathy/makemore/master/names.txt</code>
-<br><code>words = open("names.txt").read().splitlines()</code>
-<br><code>print(f"{len(words)} jmen, příklady: {words[:5]}")</code>
-<br><code># Vytvoř slovník: znak → číslo a zpět</code>
-<br><code>chars = sorted(set("".join(words)))</code>
-<br><code>stoi = {c: i+1 for i, c in enumerate(chars)}; stoi["."] = 0  # "." = start/end token</code>
-<br><code>itos = {i: c for c, i in stoi.items()}</code>
-<br><code>vocab = len(stoi)</code>
-<br><code># Bigram tabulka: N[i,j] = kolikrát se stalo, že po znaku i přišel znak j</code>
-<br><code>N = np.zeros((vocab, vocab), dtype=int)</code>
-<br><code>for w in words:</code>
-<br><code>    chs = ["."] + list(w) + ["."]</code>
-<br><code>    for c1, c2 in zip(chs, chs[1:]):</code>
-<br><code>        N[stoi[c1], stoi[c2]] += 1</code>
-<br><code>print(f"Nejčastější bigram po 'a': {itos[N[stoi['a']].argmax()]}")</code>
+<div class="code-block">import numpy as np
+<span class="code-comment"># Stáhni dataset: wget https://raw.githubusercontent.com/karpathy/makemore/master/names.txt</span>
+words = open("names.txt").read().splitlines()
+print(f"{len(words)} jmen, příklady: {words[:5]}")
+<span class="code-comment"># Vytvoř slovník: znak → číslo a zpět</span>
+chars = sorted(set("".join(words)))
+stoi = {c: i+1 for i, c in enumerate(chars)}; stoi["."] = 0  <span class="code-comment"># "." = start/end token</span>
+itos = {i: c for c, i in stoi.items()}
+vocab = len(stoi)
+<span class="code-comment"># Bigram tabulka: N[i,j] = kolikrát se stalo, že po znaku i přišel znak j</span>
+N = np.zeros((vocab, vocab), dtype=int)
+for w in words:
+    chs = ["."] + list(w) + ["."]
+    for c1, c2 in zip(chs, chs[1:]):
+        N[stoi[c1], stoi[c2]] += 1
+print(f"Nejčastější bigram po 'a': {itos[N[stoi['a']].argmax()]}")</div>
           </span></li>
           <li class="step"><span class="step-num">2</span><span class="step-content"><strong>Generování jmen z bigram modelu</strong>
 <br>💻 <strong>Nakóduj:</strong> Převeď bigram tabulku na pravděpodobnosti a generuj jména:
-<br><code># Normalizace: každý řádek tabulky musí součtem dávat 1.0</code>
-<br><code>P = (N + 1).astype(float)              # +1 = smoothing (žádná nulová pravd.)</code>
-<br><code>P = P / P.sum(axis=1, keepdims=True)   # normalizace po řádcích</code>
-<br><code>def generuj():</code>
-<br><code>    jmeno, idx = "", 0</code>
-<br><code>    while True:</code>
-<br><code>        # Vzorkuj příští znak podle pravděpodobností aktuálního znaku</code>
-<br><code>        idx = np.random.choice(vocab, p=P[idx])</code>
-<br><code>        if idx == 0: break   # konec slova</code>
-<br><code>        jmeno += itos[idx]</code>
-<br><code>    return jmeno</code>
-<br><code>print("Vygenerovaná jména:", [generuj() for _ in range(10)])</code>
+<div class="code-block"><span class="code-comment"># Normalizace: každý řádek tabulky musí součtem dávat 1.0</span>
+P = (N + 1).astype(float)              <span class="code-comment"># +1 = smoothing (žádná nulová pravd.)</span>
+P = P / P.sum(axis=1, keepdims=True)   <span class="code-comment"># normalizace po řádcích</span>
+def generuj():
+    jmeno, idx = "", 0
+    while True:
+        <span class="code-comment"># Vzorkuj příští znak podle pravděpodobností aktuálního znaku</span>
+        idx = np.random.choice(vocab, p=P[idx])
+        if idx == 0: break   <span class="code-comment"># konec slova</span>
+        jmeno += itos[idx]
+    return jmeno
+print("Vygenerovaná jména:", [generuj() for _ in range(10)])</div>
 <br>Jména budou trochu nesmyslná – bigram model je primitivní. Ale <strong>princip je identický s GPT</strong>: opakovaně vzorkuj příští token podle pravděpodobností. GPT má jen mnohem složitější pravděpodobnostní tabulku.
           </span></li>
           <li class="step"><span class="step-num">3</span><span class="step-content"><strong>Neural bigram: stejný model v PyTorchi</strong>
 <br>📺 <strong>Sleduj:</strong> <a href="https://www.youtube.com/watch?v=PaCmpygFfXo&t=3600" target="_blank">Karpathy makemore Part 1</a> – druhá polovina videa kde přechází na neural network verzi.
 <br>💻 <strong>Nakóduj:</strong> Přepiš bigram jako neuronovou síť – jedna vrstva, stejný výsledek jiným způsobem:
-<br><code>import torch, torch.nn as nn</code>
-<br><code># Dataset: všechny bigramy jako dvojice (vstupní znak, cílový znak)</code>
-<br><code>xs, ys = [], []</code>
-<br><code>for w in words[:1000]:   # prvních 1000 slov pro rychlost</code>
-<br><code>    chs = ["."] + list(w) + ["."]</code>
-<br><code>    for c1, c2 in zip(chs, chs[1:]):</code>
-<br><code>        xs.append(stoi[c1]); ys.append(stoi[c2])</code>
-<br><code>xs = torch.tensor(xs); ys = torch.tensor(ys)</code>
-<br><code># Model: jedna embedding vrstva = naučitelná verze naší tabulky P</code>
-<br><code>W = torch.randn(vocab, vocab, requires_grad=True)</code>
-<br><code>for step in range(200):</code>
-<br><code>    logits = W[xs]                                 # lookup do tabulky vah</code>
-<br><code>    loss = nn.functional.cross_entropy(logits, ys) # jak špatné jsou predikce?</code>
-<br><code>    W.grad = None; loss.backward(); </code>
-<br><code>    with torch.no_grad(): W -= 50 * W.grad</code>
-<br><code>    if step % 50 == 0: print(f"step {step}: loss = {loss.item():.3f}")</code>
+<div class="code-block">import torch, torch.nn as nn
+<span class="code-comment"># Dataset: všechny bigramy jako dvojice (vstupní znak, cílový znak)</span>
+xs, ys = [], []
+for w in words[:1000]:   <span class="code-comment"># prvních 1000 slov pro rychlost</span>
+    chs = ["."] + list(w) + ["."]
+    for c1, c2 in zip(chs, chs[1:]):
+        xs.append(stoi[c1]); ys.append(stoi[c2])
+xs = torch.tensor(xs); ys = torch.tensor(ys)
+<span class="code-comment"># Model: jedna embedding vrstva = naučitelná verze naší tabulky P</span>
+W = torch.randn(vocab, vocab, requires_grad=True)
+for step in range(200):
+    logits = W[xs]                                 <span class="code-comment"># lookup do tabulky vah – logits = raw skóre před softmaxem</span>
+    loss = nn.functional.cross_entropy(logits, ys) <span class="code-comment"># cross_entropy uvnitř dělá softmax → pravděpodobnosti → loss</span>
+    W.grad = None; loss.backward()
+    with torch.no_grad(): W -= 50 * W.grad
+    if step % 50 == 0: print(f"step {step}: loss = {loss.item():.3f}")</div>
           </span></li>
         </ul>
       </div>
@@ -1783,6 +1877,45 @@ print(f"Klady: {', '.join(hodnoceni.klady)}")</div>
       <div class="section">
         <div class="section-title">Kroky</div>
         <ul class="steps">
+          <li class="step"><span class="step-num">0</span><span class="step-content"><strong>Kdy fine-tuning? Kdy RAG? Kdy few-shot?</strong> – rozhodni se dřív, než začneš
+<div style="overflow-x:auto;margin-top:8px">
+<table style="width:100%;border-collapse:collapse;font-size:12.5px">
+  <thead><tr style="background:var(--gray-50);border-bottom:2px solid var(--border)">
+    <th style="padding:8px 10px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em">Technika</th>
+    <th style="padding:8px 10px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em">Kdy použít</th>
+    <th style="padding:8px 10px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em">Nevýhody</th>
+    <th style="padding:8px 10px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em">Cena</th>
+  </tr></thead>
+  <tbody>
+    <tr style="border-bottom:1px solid var(--border)">
+      <td style="padding:8px 10px;font-weight:600;color:var(--purple-600)">Few-shot prompting</td>
+      <td style="padding:8px 10px;color:var(--text-muted)">Vzor se vejde do promptu (2–10 příkladů), nemusíš trénovat</td>
+      <td style="padding:8px 10px;color:var(--text-muted)">Konzistentnost klesá při složitých úkolech</td>
+      <td style="padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--green-600)">0 Kč</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--border)">
+      <td style="padding:8px 10px;font-weight:600;color:var(--teal-600)">RAG</td>
+      <td style="padding:8px 10px;color:var(--text-muted)">Potřebuješ aktuální / soukromá data, která se mění</td>
+      <td style="padding:8px 10px;color:var(--text-muted)">Vyžaduje vektorovou DB a retrieval pipeline</td>
+      <td style="padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--amber-600)">nízká</td>
+    </tr>
+    <tr style="border-bottom:1px solid var(--border)">
+      <td style="padding:8px 10px;font-weight:600;color:var(--coral-600)">Fine-tuning</td>
+      <td style="padding:8px 10px;color:var(--text-muted)">Potřebuješ specifický styl, tón nebo formát výstupu, který nejde dostat promptem</td>
+      <td style="padding:8px 10px;color:var(--text-muted)">Drahé, pomalé, model nezná nová data</td>
+      <td style="padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral-600)">střední–vysoká</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 10px;font-weight:600">Fine-tuning + RAG</td>
+      <td style="padding:8px 10px;color:var(--text-muted)">Produkční systém: model naučen na stylu, RAG dodává aktuální data</td>
+      <td style="padding:8px 10px;color:var(--text-muted)">Komplexní, nutné monitorování</td>
+      <td style="padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--coral-600)">vysoká</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="tip-box" style="margin-top:8px"><strong>Pravidlo palce</strong>Začni vždy few-shot promptingem. Pokud nestačí → zkus RAG. Fine-tuning použij až jako poslední možnost – je drahý a výsledky nejsou vždy lepší.</div>
+</span></li>
           <li class="step"><span class="step-num">1</span><span class="step-content"><strong>Kdy fine-tunovat vs. RAG vs. lepší prompt</strong>
 <br>📖 <strong>Přečti:</strong> <a href="https://magazine.sebastianraschka.com/p/practical-tips-for-finetuning-llms" target="_blank">Raschka: Practical Tips for Finetuning LLMs</a> (30 min) + <a href="https://platform.openai.com/docs/guides/fine-tuning/when-to-use-fine-tuning" target="_blank">OpenAI: When to use fine-tuning</a> (10 min).
 <br>💻 <strong>Nakóduj – porovnání přístupů:</strong> Otestuj stejný úkol třemi způsoby:
@@ -1812,7 +1945,7 @@ print(f"Klady: {', '.join(hodnoceni.klady)}")</div>
 <br><code>    if j.status in ("succeeded", "failed"): break</code>
 <br><code>    time.sleep(30)</code>
 <br><code>print(f"\nHotovo! Model: {j.fine_tuned_model}")</code>
-<br>Sleduj live na <a href="https://platform.openai.com/finetune" target="_blank">platform.openai.com/finetune</a>. Trvá 20–60 min. Stojí ~$1–5.
+<br>Sleduj live na <a href="https://platform.openai.com/finetune" target="_blank">platform.openai.com/finetune</a>. Trvá 20–60 min. Stojí ~$5–15 (pro 50–100 příkladů; záleží na délce textů).
           </span></li>
           <li class="step"><span class="step-num">3</span><span class="step-content"><strong>Benchmark: base vs. fine-tuned</strong>
 <br>💻 <strong>Nakóduj:</strong> Srovnej oba modely na val setu:
@@ -1909,7 +2042,9 @@ print(f"Klady: {', '.join(hodnoceni.klady)}")</div>
 <br><code>inputs = tokenizer(text, return_tensors="pt")</code>
 <br><code>print("Tokeny:", tokenizer.convert_ids_to_tokens(inputs["input_ids"][0]))</code>
 <br><code>with torch.no_grad(): logits = model(**inputs).logits</code>
+<br><code># logits = raw unnormalized scores (např. [-2.3, 4.1]) – nejsou pravděpodobnosti!</code>
 <br><code>probs = torch.softmax(logits, dim=-1)</code>
+<br><code># softmax převede logits na pravděpodobnosti: součet = 1.0 (např. [0.01, 0.99])</code>
 <br><code>print(f"NEGATIVE: {probs[0][0]:.3f}  POSITIVE: {probs[0][1]:.3f}")</code>
 <br>Toto je přesně to co pipeline dělá uvnitř – vidíš každý krok od textu po pravděpodobnost.
           </span></li>
@@ -1984,12 +2119,17 @@ print(f"Klady: {', '.join(hodnoceni.klady)}")</div>
           <li class="step"><span class="step-num">3</span><span class="step-content"><strong>LoRA fine-tuning v Google Colab</strong>
 <br>📖 <strong>Přečti:</strong> <a href="https://huggingface.co/blog/lora" target="_blank">HuggingFace blog: LoRA</a> (20 min) – co je rank, alpha, proč LoRA trénuje jen ~1 % parametrů.
 <br>💻 <strong>Nakóduj v Google Colab (T4 GPU):</strong> Otevři <a href="https://colab.research.google.com" target="_blank">colab.research.google.com</a> → Runtime → T4 GPU:
+<div class="tip-box"><strong>Jak zapnout GPU v Google Colab</strong>1. Otevři notebook v Colab<br>2. Menu: <strong>Runtime → Change runtime type</strong><br>3. Hardware accelerator: vyber <strong>T4 GPU</strong><br>4. Klikni Save<br>5. Ověř: <code>import torch; print(torch.cuda.is_available())</code> → mělo by vrátit <code>True</code><br><br>⚠️ Free Colab má limit ~4 hodiny GPU/den. Ulož notebook průběžně (<code>Ctrl+S</code>) a checkpointy modelu na Google Drive.</div>
 <br><code>!pip install peft transformers datasets accelerate wandb -q</code>
 <br><code>from transformers import AutoModelForSeq2SeqLM, AutoTokenizer</code>
 <br><code>from peft import get_peft_model, LoraConfig, TaskType</code>
 <br><code>model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-small")</code>
-<br><code>config = LoraConfig(task_type=TaskType.SEQ_2_SEQ_LM, r=16, lora_alpha=32,</code>
-<br><code>                    target_modules=["q","v"], lora_dropout=0.05)</code>
+<br><code>config = LoraConfig(</code>
+<br><code>    task_type=TaskType.SEQ_2_SEQ_LM,</code>
+<br><code>    r=16,           # rank = velikost LoRA matic; menší r = méně parametrů = rychlejší; typicky 4–64</code>
+<br><code>    lora_alpha=32,  # lora_alpha/r = efektivní LR škálování; pravidlo: alpha = 2×r</code>
+<br><code>    target_modules=["q","v"],  # trénujeme jen query+value; nejúčinnější pro jazykové úkoly</code>
+<br><code>    lora_dropout=0.05)</code>
 <br><code>lora_model = get_peft_model(model, config)</code>
 <br><code>lora_model.print_trainable_parameters()   # výsledek: ~0.3% parametrů!</code>
 <br>Pak nastav W&B a spusť krátké trénování. Sleduj loss křivku.
@@ -2102,6 +2242,7 @@ print(f"Klady: {', '.join(hodnoceni.klady)}")</div>
 <br><code>    ("user",   "{otazka}")</code>
 <br><code>])</code>
 <br><code>chain = prompt | llm | StrOutputParser()</code>
+<div class="tip-box"><strong>Co dělá operátor | v LangChain?</strong>Pipe <code>|</code> je LangChain zkratka pro <em>sekvenční spouštění</em>. <code>chain = prompt | llm | parser</code> znamená: "vezmi prompt → pošli do LLM → výsledek zparsuj". Je to ekvivalent:<br><code>result = parser(llm(prompt.format(...)))</code><br>Každý člen musí mít kompatibilní vstup/výstup – LangChain to kontroluje při sestavení chainu. Tato syntaxe se nazývá <strong>LCEL (LangChain Expression Language)</strong>.</div>
 <br><code># Streaming – výstup přichází postupně jako ze skutečného chatu</code>
 <br><code>for chunk in chain.stream({"brand": "Evina Móda", "otazka": "Jak kombinovat černé šaty?"}):</code>
 <br><code>    print(chunk, end="", flush=True)</code>
