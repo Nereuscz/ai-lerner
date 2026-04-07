@@ -462,9 +462,16 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
 </div>
 
 <!-- ══════════════ JUPYTERLAB PRŮVODCE ══════════════ -->
-<div class="jupyter-box" id="jupyter">
-  <h2>📓 JupyterLab: co to je a jak ho používat</h2>
-  <p>JupyterLab je interaktivní prostředí v prohlížeči, kde píšeš kód po malých blocích a vidíš výsledky okamžitě – ideální pro experimenty s AI. Dokumentace: <a href="https://jupyterlab.readthedocs.io/en/latest/getting_started/overview.html" target="_blank">jupyterlab.readthedocs.io</a></p>
+<div class="collapsible jupyter-box" id="jupyter">
+  <div class="collapsible-header" onclick="toggle('jupyter')" style="margin:-22px -24px 0;padding:16px 24px;border-radius:12px 12px 0 0">
+    <div>
+      <h2>📓 JupyterLab průvodce</h2>
+      <p>Buňky, klávesové zkratky, kernel, grafy, instalace balíčků</p>
+    </div>
+    <span class="chevron">▶</span>
+  </div>
+  <div class="collapsible-body">
+  <p style="margin-top:12px;font-size:13px;color:var(--text-muted)">JupyterLab je interaktivní prostředí v prohlížeči, kde píšeš kód po malých blocích a vidíš výsledky okamžitě – ideální pro experimenty s AI. Dokumentace: <a href="https://jupyterlab.readthedocs.io/en/latest/getting_started/overview.html" target="_blank">jupyterlab.readthedocs.io</a></p>
   <div class="jupyter-grid">
     <div class="jupyter-card"><strong>Spuštění</strong><span>V Terminálu (s aktivním venv): <kbd>jupyter lab</kbd> → otevře se prohlížeč. Soubory notebooků mají příponu <kbd>.ipynb</kbd>. Nový notebook: File → New → Notebook.</span></div>
     <div class="jupyter-card"><strong>Buňky</strong><span>Notebook = série buněk. Buňka může být kód (Python) nebo Markdown (text). Přepínání: nahoře vybereš <kbd>Code</kbd> nebo <kbd>Markdown</kbd>.</span></div>
@@ -475,12 +482,20 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
     <div class="jupyter-card"><strong>Instalace balíčků</strong><span>V notebooku piš <kbd>!pip install název</kbd> (vykřičník = shell příkaz). Tím nainstaluješ přímo do aktivního venv bez opuštění notebooku.</span></div>
     <div class="jupyter-card"><strong>Uložení</strong><span><kbd>Cmd+S</kbd> uloží notebook. Jupyter autosave každé 2 minuty. Soubor .ipynb je vlastně JSON – dá se verzovat v Gitu (ale je to trochu chaotické).</span></div>
   </div>
+  </div><!-- /collapsible-body -->
 </div>
 
 <!-- ══════════════ DEV NÁSTROJE: GIT, VS CODE, CURSOR ══════════════ -->
-<div class="devtools-section" id="devtools">
-  <h2>🛠 Vývojářské nástroje které budeš používat každý den</h2>
-  <p>Toto nainstaluj ještě před první lekcí. Jsou to nástroje, ne kurzy – naučíš se je používáním, ne studiem.</p>
+<div class="collapsible devtools-section" id="devtools">
+  <div class="collapsible-header" onclick="toggle('devtools')" style="margin:-6px 0 0">
+    <div>
+      <h2>🛠 Vývojářské nástroje</h2>
+      <p>Git, VS Code, Cursor Pro+, Terminal, venv, API klíče, uv</p>
+    </div>
+    <span class="chevron">▶</span>
+  </div>
+  <div class="collapsible-body" style="padding:0">
+  <p style="font-size:13px;color:var(--text-muted);margin:12px 0 16px">Toto nainstaluj ještě před první lekcí. Jsou to nástroje, ne kurzy – naučíš se je používáním, ne studiem.</p>
   <div class="devtools-grid">
 
     <div class="devtool">
@@ -665,12 +680,20 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
     </div>
 
   </div>
+  </div><!-- /collapsible-body -->
 </div>
 
 <!-- ══════════ JAZYKY A TECHNOLOGIE ══════════ -->
-<div class="devtools-section" id="jazyky">
-  <h2>💬 Jazyky a technologie – co se naučit a v jakém pořadí</h2>
-  <p>Jako AI developer nepotřebuješ znát všechno. Tady je přehled co je nutné, co se hodí, a co klidně přeskočit – s vazbou na konkrétní lekce kurzu.</p>
+<div class="collapsible devtools-section" id="jazyky">
+  <div class="collapsible-header" onclick="toggle('jazyky')" style="margin:-6px 0 0">
+    <div>
+      <h2>💬 Jazyky a technologie</h2>
+      <p>Co se naučit a v jakém pořadí – Python, SQL, Bash, TypeScript...</p>
+    </div>
+    <span class="chevron">▶</span>
+  </div>
+  <div class="collapsible-body" style="padding:0">
+  <p style="font-size:13px;color:var(--text-muted);margin:12px 0 16px">Jako AI developer nepotřebuješ znát všechno. Tady je přehled co je nutné, co se hodí, a co klidně přeskočit – s vazbou na konkrétní lekce kurzu.</p>
 
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px">
 
@@ -733,15 +756,22 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
     <strong style="font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--purple-600);display:block;margin-bottom:4px">Klíčový poznatek</strong>
     AI Engineer v roce 2026 = <strong>Python developer který rozumí LLM</strong>. Neučíš se nový jazyk – prohlubuješ Python a přidáváš AI vrstvu. Pokud umíš proměnné, funkce a cykly, máš všechno co potřebuješ pro start. Zbytek se naučíš praxí při plnění lekcí.
   </div>
-
+  </div><!-- /collapsible-body -->
 </div>
 
 <div class="connector"><div class="connector-line"></div></div>
 
 <!-- ══════════ OPENAI MODELY – PŘEHLED ══════════ -->
-<div class="devtools-section" id="openai-models">
-  <h2>🧠 OpenAI modely – co je co a kdy použít který</h2>
-  <p>Přehled aktuálního portfolia (duben 2026). Lineup se v posledním roce výrazně rozrostl – GPT-5 rodina je nyní flagship, GPT-4.1 zůstává produkční standard pro development. V kurzu budeš pracovat primárně s GPT-4.1 rodinou a Responses API.</p>
+<div class="collapsible devtools-section" id="openai-models">
+  <div class="collapsible-header" onclick="toggle('openai-models')" style="margin:-6px 0 0">
+    <div>
+      <h2>🧠 OpenAI modely</h2>
+      <p>GPT-5, GPT-4.1, o3, o4-mini, embeddingy – kdy použít který</p>
+    </div>
+    <span class="chevron">▶</span>
+  </div>
+  <div class="collapsible-body" style="padding:0">
+  <p style="font-size:13px;color:var(--text-muted);margin:12px 0 16px">Přehled aktuálního portfolia (duben 2026). Lineup se v posledním roce výrazně rozrostl – GPT-5 rodina je nyní flagship, GPT-4.1 zůstává produkční standard pro development. V kurzu budeš pracovat primárně s GPT-4.1 rodinou a Responses API.</p>
   <div class="devtools-grid">
 
     <div class="devtool">
@@ -897,13 +927,20 @@ h1{font-size:30px;font-weight:600;line-height:1.15;margin-bottom:8px}
     </div>
 
   </div>
+  </div><!-- /collapsible-body -->
 </div>
 
-
 <!-- ══════════ ANTHROPIC MODELY – PŘEHLED ══════════ -->
-<div class="devtools-section" id="anthropic-models">
-  <h2>🟣 Anthropic Claude modely – alternativní stack</h2>
-  <p>Anthropic je druhý klíčový provider (duben 2026). Claude modely jsou vynikající pro reasoning, kódování a dlouhé kontexty. Máš přístup přes Cursor Pro+ i přímo přes Anthropic API.</p>
+<div class="collapsible devtools-section" id="anthropic-models">
+  <div class="collapsible-header" onclick="toggle('anthropic-models')" style="margin:-6px 0 0">
+    <div>
+      <h2>🟣 Anthropic Claude modely</h2>
+      <p>Opus 4.6, Sonnet 4.6, Haiku 4.5 – Python SDK a kdy použít který</p>
+    </div>
+    <span class="chevron">▶</span>
+  </div>
+  <div class="collapsible-body" style="padding:0">
+  <p style="font-size:13px;color:var(--text-muted);margin:12px 0 16px">Anthropic je druhý klíčový provider (duben 2026). Claude modely jsou vynikající pro reasoning, kódování a dlouhé kontexty. Máš přístup přes Cursor Pro+ i přímo přes Anthropic API.</p>
   <div class="devtools-grid">
 
     <div class="devtool">
@@ -977,8 +1014,8 @@ print(msg.content[0].text)</div>
     </div>
 
   </div>
+  </div><!-- /collapsible-body -->
 </div>
-
 
 <div class="connector"><div class="connector-line"></div></div>
 
