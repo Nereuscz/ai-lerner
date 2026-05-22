@@ -1,0 +1,11 @@
+{
+  "name": "ai-developer-self-study-roadmap",
+  "private": true,
+  "scripts": {
+    "serve": "python3 -m http.server 8080",
+    "validate": "html-validate index.html"
+  },
+  "devDependencies": {
+    "html-validate": "^9.5.0"
+  }
+}
